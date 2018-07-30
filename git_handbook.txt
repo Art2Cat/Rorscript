@@ -1,5 +1,5 @@
 # init git repository
-git init 
+git init
 
 # set a new remote
 git remote add origin https://github.com/user/repo.git
@@ -40,7 +40,7 @@ git log --since='MAR 1 2018' --until='MAR 15 2018'
 # exclude author from logs
 git log --perl-regexp --author='^((?!excluded-author-regex).*)'
 
-# show which commit 
+# show which commit
 git log --summary -M90% | grep -e "^ rename"
 
 # track file move history
@@ -194,7 +194,7 @@ git show-ref --tags
 git log --decorate
 
 # check commit in which tags
-git tag --contains <hash> 
+git tag --contains <hash>
 or
 git log --oneline <tag_name> | grep "${comment}"
 
