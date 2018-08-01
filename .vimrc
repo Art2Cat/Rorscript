@@ -18,7 +18,7 @@ set guifont=Menlo\ 14,DejaVu\ Sans\ Mono\ 14
 syntax on   "enable syntax"
 syntax enable
 set background=dark   "set background"
-set termguicolors
+" set termguicolors
 colorscheme material-monokai
 set nowrap  "set nowrap line"
 set fileformat=unix "fileformat unix 'lf'"
@@ -110,7 +110,7 @@ autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 
 "YouCompleteMe configuration"
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 set completeopt=longest,menu
 let g:ycm_python_binary_path='python'

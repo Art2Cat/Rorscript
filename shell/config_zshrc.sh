@@ -11,13 +11,13 @@ if [ -z "$(which zsh)" ]; then
 	if [ "$(uname)" == "Darwin" ]; then
 		brew install zsh
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-		echo "bash -c zsh" >> ~./bash_profile
+		echo "bash -c zsh" >> ~/.bash_profile
 	elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 		sudo apt update
 		sudo apt install zsh -y
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 		chsh -s `which zsh`
-		echo "bash -c zsh" >> ~./bashrc
+		echo "bash -c zsh" >> ~/.bashrc
 	fi
 fi
 

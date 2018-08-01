@@ -2,17 +2,23 @@
 
 git clone https://github.com/universal-ctags/ctags.git ~/ctags
 cd ~/ctags
-if type autoreconf | grep 'not found' 
+if [ -z $(which make) ]
 then
-	sudo apt -y install autoreconf
+	sudo apt -y install make
 fi
 
-if type pkg-config | grep 'not found'
+if [ -z `which autoreconf` ]
+then
+	sudo apt -y install autoreconf
+	sudo apt -y install dh-autoreconf
+fi
+
+if [ -z `which pkg-config` ]
 then
 	sudo apt -y install pkg-config
 fi
 
-./autogen.sh 
+./autogen.sh
 ./configure
 make
 sudo make install
