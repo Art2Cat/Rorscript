@@ -19,7 +19,8 @@ syntax on   "enable syntax"
 syntax enable
 set background=dark   "set background"
 " set termguicolors
-colorscheme material-monokai
+" colorscheme dracula
+color dracula
 set nowrap  "set nowrap line"
 set fileformat=unix "fileformat unix 'lf'"
 set cindent     "indenct like C"
@@ -66,18 +67,6 @@ nnoremap U <C-r>
 "clear highlights on hitting esc twice."
 nnoremap <esc><esc> :noh<return>
 
-" auto remove space when save file "
-function! <SID>stripTrailingSpaces()
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	call cursor(l, c)
-endfunction
-autocmd FileType c,cpp,java,go,javascript,pupept,python,rust,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>stripTrailingSpaces()
-
-
-"press F5 run python"
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'Valloric/YouCompleteMe'
@@ -85,7 +74,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter'
 Plug 'wakatime/vim-wakatime'
-Plug 'skielbasa/vim-material-monokai'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
@@ -99,6 +87,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'fatih/vim-go'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'rust-lang/rust.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 filetype on
