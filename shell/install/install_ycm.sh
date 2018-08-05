@@ -6,11 +6,11 @@ sudo apt install build-essential cmake
 
 sudo apt install python-dev python3-dev
 
-cd ~/.vim/bundle/
+cd ~/.vim/plugged
 
 git clone https://github.com/Valloric/YouCompleteMe.git
 
-cd ~/.vim/bundle/YouCompleteMe
+cd ~/.vim/plugged/YouCompleteMe
 
 git submodule update --init --recursive
 

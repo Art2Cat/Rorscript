@@ -25,6 +25,8 @@ if [[ $response == "y" ]]; then
 	if [[ -n $email ]]; then
 		git config --global core.editor $editor
 		echo ""
+	else
+		git config --global core.editor vim
 	fi
 	read -r -t 60 -p "enter your http proxy host: " host
 	echo ""

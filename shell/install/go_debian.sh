@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt-get update
