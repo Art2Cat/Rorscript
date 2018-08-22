@@ -69,12 +69,12 @@ nnoremap <esc><esc> :noh<return>
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'Valloric/YouCompleteMe'
-Plug 'maralla/completor.vim' , { 'as': 'completor' }
+Plug 'Valloric/YouCompleteMe'
+"Plug 'maralla/completor.vim' , { 'as': 'completor' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
 Plug 'wakatime/vim-wakatime'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -94,28 +94,28 @@ autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 
 "YouCompleteMe configuration"
-" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-" let g:ycm_confirm_extra_conf=0
-" set completeopt=longest,menu
-" let g:ycm_python_binary_path='python'
-" let g:ycm_seed_identifiers_with_syntax=1
-" let g:ycm_complete_in_comments=1
-" let g:ycm_collect_identifiers_from_tags_files=1
-" let g:ycm_collect_identifiers_from_comments_and_strings=0
-" let g:ycm_min_num_of_chars_for_completion=2
-" let g:ycm_autoclose_preview_window_after_completion=1
-" let g:ycm_cache_omnifunc=0
-" let g:ycm_complete_in_strings=1
-" let g:ycm_key_invoke_completion='<C-Space>'
-" let g:ycm_enable_diagnostic_signs=1
-" let g:ycm_enable_diagnostic_highlighting=1
-" let g:ycm_always_populate_location_list=1
-" let g:ycm_semantic_triggers = {
-"			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-"			\ 'cs,lua,javascript': ['re!\w{2}'],
-"			\ }
-"
-"nmap <F3> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf=0
+set completeopt=longest,menu
+let g:ycm_python_binary_path='python'
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_complete_in_comments=1
+let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_collect_identifiers_from_comments_and_strings=0
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_cache_omnifunc=0
+let g:ycm_complete_in_strings=1
+let g:ycm_key_invoke_completion='<C-Space>'
+let g:ycm_enable_diagnostic_signs=1
+let g:ycm_enable_diagnostic_highlighting=1
+let g:ycm_always_populate_location_list=1
+let g:ycm_semantic_triggers = {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+
+nmap <F3> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "NERDTree configuration""
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -175,9 +175,9 @@ function! s:compile_and_run()
 	exec 'vertical rightbelow copen 80'
 	exec 'wincmd w'
 	if &filetype ==# 'c'
-		exec 'AsyncRun! gcc % -o %<; time ./%<'
+		exec 'AsyncRun! gcc -Wall % -o %<; time ./%<'
 	elseif &filetype ==# 'cpp'
-		exec 'AsyncRun! g++ -std=c++11 % -o %<; time ./%<'
+		exec 'AsyncRun! g++ -Wall -std=c++11 % -o %<; time ./%<'
 	elseif &filetype ==# 'rust'
 		exec 'AsyncRun! rustc %; time ./%<'
 	elseif &filetype ==# 'java'
@@ -195,22 +195,19 @@ endfunction
 nnoremap <F5> :call <SID>compile_and_run()<CR>
 " let g:asyncrun_open = 6
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
-nnoremap <slient> <F9> :AsyncRun clang++ -Wall -02 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+nnoremap <slient> <F9> :AsyncRun g++ -Wall -02 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 nnoremap <slient> <F8> :AsyncRun -raw -cwd=$(VIM_FILEPATH) $(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 
 let g:better_whitespace_enable=1
 let g:strip_whitespace_on_save=1
 
-" indentLine config
-let g:indentLine_enabled = 1
-let g:indentLine_char = '¦'
+" let g:completor_clang_binary = '/usr/bin/clang'
+"map <F3> <Plug>CompletorCppJumpToPlaceholder
+"imap <F3> <Plug>CompletorCppJumpToPlaceholder
 
-let g:completor_clang_binary = '/usr/bin/clang'
-map <F3> <Plug>CompletorCppJumpToPlaceholder
-imap <F3> <Plug>CompletorCppJumpToPlaceholder
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+" Trigger configuration.
+" Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
