@@ -1,3 +1,1 @@
-**
-this repository store my configuration script.
-**
+> this repository store my configuration script.
