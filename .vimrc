@@ -23,7 +23,7 @@ colorscheme dracula
 color dracula
 set nowrap  "set nowrap line"
 set fileformat=unix "fileformat unix 'lf'"
-set fileformats=unix,dos,mac
+" set fileformats=unix,dos,mac
 set cindent     "indenct like C"
 set autoindent
 filetype indent on
@@ -85,8 +85,11 @@ Plug 'skywind3000/asyncrun.vim' , { 'as': 'asyncrun' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Chiel92/vim-autoformat'
+Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim', { 'as': 'rustvim' }
 Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 filetype on
@@ -200,7 +203,6 @@ endfunction
 nnoremap <F5> :call <SID>compile_and_run()<CR>
 " let g:asyncrun_open=6
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
-nnoremap <slient> <F7> :AsyncRun cargo run "$(VIM_FILEPATH)" <cr>
 nnoremap <slient> <F9> :AsyncRun g++ -Wall -02 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 nnoremap <slient> <F8> :AsyncRun -raw -cwd=$(VIM_FILEPATH) $(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 
@@ -241,8 +243,6 @@ map <right> <nop>
 " imap <left> <nop>
 " imap <right> <nop>
 
-" rust configuration
-let g:rustfmt_autosave=1
-" nmap <F8> :TagbarToggle<CR>
+nmap <F7> :TagbarToggle<CR>
 
-
+let g:airline#extensions#tabline#enabled = 1
