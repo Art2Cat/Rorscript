@@ -15,7 +15,7 @@ set showtabline=1
 "set font"
 set guifont=Menlo:h14,DejaVu_Sans_Mono:h14
 set guifont=Menlo\ 14,DejaVu\ Sans\ Mono\ 14
-syntax on   " enable syntax
+syntax on   "enable syntax"
 syntax enable
 set background=dark   "set background"
 " set termguicolors

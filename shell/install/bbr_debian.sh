@@ -3,7 +3,7 @@
 val=`uname -r`
 val1="4.9.0"
 
-if [[ $val < $val1 ]]
+if [[ $val < $val1 ]];
 then
 	sudo mkdir kernel-tmp && cd kernel-tmp
 	wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.40/linux-headers-4.9.40-040940_4.9.40-040940.201707271932_all.deb

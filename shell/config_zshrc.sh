@@ -2,10 +2,10 @@
 
 # if [ $UID -ne 0 ];
 # then
-# 	echo "Not root user. Please run as root."
-# 	exit
+#		echo "Not root user. Please run as root."
+#		exit
 # else
-# 	echo "Root user."
+#		echo "Root user."
 # fi
 if [ -z "$(which zsh)" ]; then
 	if [ "$(uname)" == "Darwin" ]; then
@@ -42,7 +42,9 @@ sed -i "s/  git/\n  git zsh-syntax-highlighting/" ~/.zshrc
 # echo -e "export GOPATH=$HOME/go" >> ~/.zshrc
 # echo -e "QT_HOMEBREW=true" >> ~/.zshrc
 
+echo -e "export PATH="$HOME/.cargo/bin:$PATH"" >> ~/.zshrc
 echo -e "alias go='http_proxy=http://127.0.0.1:3213/ https_proxy=http://127.0.0.1:3213/ no_proxy=localhost,127.0.0.0/8,::1 go'" >> ~/.zshrc
+echo -e 'export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"' >> ~/.zshrc
 
-source ~/.bashrc
+source~/.bashrc
 source ~/.zshrc
