@@ -23,7 +23,7 @@ function menu {
 	echo -e "\t1. Start aria2"
 	echo -e "\t2. Stop aria2"
 	echo -e "\t3. Monitor aria2 log"
-	echo -e "\t3. clear aria2 log"
+	echo -e "\t4. clear aria2 log"
 	echo -e "\t0. Exit program\n\n"
 	echo -en "\t\tEnter option: "
 	read -n 1 option
@@ -32,7 +32,7 @@ function menu {
 while [ 1 ]
 do
 	menu
-	case $ option in
+	case $option in
 		0)
 			break ;;
 		1)
