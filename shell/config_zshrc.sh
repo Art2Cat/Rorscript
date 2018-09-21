@@ -29,10 +29,10 @@ sed -i "s/  git/\n  git zsh-syntax-highlighting/" ~/.zshrc
 # echo "Add backup dir for rm."
 # mkdir -p ~/.trash/
 
-# echo "alias rm=movetotrash" >> ~/.zshrc
-# echo "alias urm=unrmfile" >> ~/.zshrc
+# echo -e "alias rm='movetotrash'" >> ~/.zshrc
+# echo -e "alias urm='unrmfile'" >> ~/.zshrc
 # echo -e "alias cltrash=cleartrash\n" >> ~/.zshrc
-# echo -e "movetotrash() {\n\tmv \$@ ~/.trash/ \n}\n" >> ~/.zshrc
+# echo -e "movetotrash() {\n\tcp \$@ ~/.trash/ && rm $@ \n}\n" >> ~/.zshrc
 # echo -e "unrmfile() {\n\tmv -i ~/.trash/\$@ ./ \n}\n" >> ~/.zshrc
 # echo -e "cleartrash() {\n\tread -p \"Clear trash?(Y/n)\" confirm\n\tconfirm=\${confirm,,}\n\t[ \$confirm == 'y' ] && /usr/bin/rm -rf ~/.trash/\*\n}\n" >> ~/.zshrc
 
