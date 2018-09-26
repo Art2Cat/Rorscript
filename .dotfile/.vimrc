@@ -15,7 +15,8 @@ set showtabline=1
 "set font"
 set guifont=Menlo:h14,DejaVu_Sans_Mono:h14
 set guifont=Menlo\ 14,DejaVu\ Sans\ Mono\ 14
-syntax on   "enable syntax"
+"enable syntax"
+syntax on
 syntax enable
 set background=dark   "set background"
 " set termguicolors
@@ -23,15 +24,15 @@ colorscheme dracula
 color dracula
 set nowrap  "set nowrap line"
 set fileformat=unix "fileformat unix 'lf'"
-" set fileformats=unix,dos,mac
+set fileformats=unix,dos,mac
 set cindent     "indenct like C"
 set autoindent
 filetype indent on
 filetype plugin on
 set expandtab
-set tabstop=2   "set tab size 4"
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4   "set tab size 4"
+set shiftwidth=4
+set softtabstop=4
 set history=200
 
 set showmatch   "show match parentheses"
@@ -94,12 +95,9 @@ call plug#end()
 
 filetype on
 
-autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
-
-
 "YouCompleteMe configuration"
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-let g:ycm_rust_src_path = '$(rustc --print sysroot)/lib/rustlib/src/rust/src'
+let g:ycm_rust_src_path=$RUST_SRC_PATH
 let g:ycm_confirm_extra_conf=1
 set completeopt=longest,menu
 let g:ycm_python_binary_path='python'
@@ -154,24 +152,16 @@ let g:NERDTreeIndicatorMapCustom={
 
 let mapleader=','
 
-" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root=['.root', '.svn', '.git', '.hg', '.project']
-
-" 所生成的数据文件的名称
 let g:gutentags_ctags_tagfile='.tags'
-
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
 let s:vim_tags=expand('~/.cache/tags')
 let g:gutentags_cache_dir=s:vim_tags
-
-" 配置 ctags 的参数
 let g:gutentags_ctags_extra_args=['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--rust-kinds=+px']
 
 
-" 检测 ~/.cache/tags 不存在就新建
 if !isdirectory(s:vim_tags)
 	    silent! call mkdir(s:vim_tags, 'p')
 endif
@@ -209,10 +199,6 @@ nnoremap <slient> <F8> :AsyncRun -raw -cwd=$(VIM_FILEPATH) $(VIM_FILEDIR)/$(VIM_
 let g:better_whitespace_enable=1
 let g:strip_whitespace_on_save=1
 
-" let g:completor_clang_binary='/usr/bin/clang'
-"map <F3> <Plug>CompletorCppJumpToPlaceholder
-"imap <F3> <Plug>CompletorCppJumpToPlaceholder
-
 au BufWrite * :Autoformat
 
 let g:indent_guides_enable_on_vim_startup=1
@@ -246,3 +232,5 @@ map <right> <nop>
 nmap <F7> :TagbarToggle<CR>
 
 let g:airline#extensions#tabline#enabled = 1
+
+let g:rustfmt_autosave = 1
