@@ -1,21 +1,15 @@
-"no compatible with vi"
 set nocompatible
-"show line"
 set number
-" hide scroll"
 set guioptions-=r
 set guioptions-=L
 set guioptions-=b
 
-vnoremap <Leader>y "+y
-nmap <Leader>p "+p
+noremap <leader>y "+y
+nmap <leader>p "+p
 
-"hide top tag"
 set showtabline=1
-"set font"
 set guifont=Menlo:h14,DejaVu_Sans_Mono:h14
 set guifont=Menlo\ 14,DejaVu\ Sans\ Mono\ 14
-"enable syntax"
 syntax on
 syntax enable
 set background=dark   "set background"
@@ -72,7 +66,6 @@ nnoremap <esc><esc> :noh<return>
 call plug#begin('~/.vim/plugged')
 
 Plug 'Valloric/YouCompleteMe'
-"Plug 'maralla/completor.vim' , { 'as': 'completor' }
 Plug 'scrooloose/nerdtree'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
@@ -123,7 +116,6 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "NERDTree configuration""
 nnoremap <F2> :NERDTreeToggle<CR>
-"map <F2> :NERDTreeMirror<CR>":
 
 let NERDTreeChDirMode=1
 let NERDTreeShowBookmarks=1
@@ -234,3 +226,4 @@ nmap <F7> :TagbarToggle<CR>
 let g:airline#extensions#tabline#enabled = 1
 
 let g:rustfmt_autosave = 1
+
