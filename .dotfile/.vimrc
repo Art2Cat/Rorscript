@@ -78,7 +78,7 @@ Plug 'Yggdroot/LeaderF'
 Plug 'skywind3000/asyncrun.vim' , { 'as': 'asyncrun' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'Chiel92/vim-autoformat'
+Plug 'Art2Cat/vim-autoformat'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim', { 'as': 'rustvim' }
 Plug 'majutsushi/tagbar'
