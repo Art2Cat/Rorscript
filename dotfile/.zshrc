@@ -101,6 +101,6 @@ source $ZSH/oh-my-zsh.sh
 	export RUST_BIN=$HOME/.cargo/bin
 	export PATH=$RUST_BIN:$PATH
 
-	export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+	export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
 

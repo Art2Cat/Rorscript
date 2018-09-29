@@ -1,0 +1,151 @@
+set nocompatible
+set number
+set guioptions-=r
+set guioptions-=L
+set guioptions-=b
+
+noremap <leader>y "+y
+nmap <leader>p "+p
+
+syntax on
+syntax enable
+set nowrap  "set nowrap line"
+set fileformat=unix "fileformat unix 'lf'"
+set fileformats=unix,dos,mac
+set cindent     "indenct like C"
+filetype indent on
+set expandtab
+set tabstop=4   "set tab size 4"
+set shiftwidth=4
+set softtabstop=4
+set history=200
+
+set showmatch   "show match parentheses"
+set scrolloff=5     "5 rows from the top and bottom"
+set laststatus=2    "Command line 2 lines"
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set enc=utf8
+set fencs=utf8,gbk,gb2312,gb18030      "file encoding"
+set encoding=utf-8
+set backspace=2
+set linespace=6
+set mouse=a     "enable mouse"
+set selection=exclusive
+set selectmode=mouse,key
+set clipboard=unnamed
+set matchtime=5
+set ignorecase      "ignore upper or lower case"
+set incsearch
+set hlsearch        "search high light"
+set noexpandtab     "not allow expand table"
+set whichwrap+=<,>,h,l
+set autoread
+set cursorline      " highlight current line"
+set cursorcolumn        "highlight current column"
+set nu
+set cmdheight=5
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+" remap U to <C-r>"
+nnoremap U <C-r>
+"clear highlights on hitting esc twice."
+nnoremap <esc><esc> :noh<return>
+
+" Disable Arrow keys in Escape mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" ==================================================
+" Show all the provided actions via `:actionlist`
+" ==================================================
+nnoremap <Leader>su :action ShowUsages<CR>
+nnoremap <Leader>fu :action FindUsages<CR>
+nnoremap <Leader><space> a<space><ESC>:action CodeCompletion<CR>
+inoremap <Leader><space> <space><ESC>:action CodeCompletion<CR>
+" cut
+vnoremap <C-x> "+d
+" <C-N>
+nnoremap <C-n> :action GotoClass<CR>
+inoremap <C-n> <ESC>:action GotoClass<CR>
+nnoremap <leader>gc :action GotoClass<CR>
+inoremap <leader>gc <ESC>:action GotoClass<CR>
+" <C-e>
+nnoremap <leader>cf :action RecentFiles<CR>
+" <C-S-N>
+nnoremap <C-S-n> :action GotoFile<CR>
+inoremap <C-S-n> <ESC>:action GotoFile<CR>
+
+" <C-o>
+nnoremap <C-o> :action OverrideMethods<CR>
+" <C-F12>
+nnoremap <leader>ss :action FileStructurePopup<CR>
+" <C-P>
+nnoremap <C-P> :action ParameterInfo<CR>
+inoremap <C-P> <ESC>:action ParameterInfo<CR>a
+" <C-Q>
+nnoremap <C-q> :action QuickJavaDoc<CR>
+
+" <C-H> Hierarchy Class
+nnoremap <C-H> :action TypeHierarchy<CR>
+" <C-S-H> Hierarchy Method
+nnoremap <C-S-H> :action MethodHierarchy<CR>
+nnoremap <leader>hm :action MethodHierarchy<CR>
+" as mouse clicked
+nnoremap <leader>gd :action GotoDeclaration<CR>
+inoremap <leader>gd <ESC>:action GotoDeclaration<CR>
+" mean going to see the real implementation,aka method
+nnoremap <C-A-B> :action GotoImplementation<CR>
+nnoremap <leader>gI :action GotoImplementation<CR>
+" as go to SuperMethod
+nnoremap <leader>gs :action GotoSuperMethod<CR>
+
+" back
+nnoremap <leader>gb :action Back<CR>
+" forward
+nnoremap <leader>fw :action Forward<CR>
+" <C-A-L>
+nnoremap <C-A-l> :action ReformatCode<CR>
+inoremap <C-A-l> <ESC>:action ReformatCode<CR>a
+nnoremap <leader>fm :action ReformatCode<CR>
+inoremap <leader>fm <ESC>:action ReformatCode<CR>a
+
+nnoremap <Leader>oi :action OptimizeImports<CR>
+nnoremap <space>oi :action OptimizeImports<CR>
+
+" built in search looks better
+map <C-f> <ESC>:action Find<CR>
+" comment
+nnoremap <Leader>cc :action CommentByLineComment<CR>
+" pretend :) uncomment 
+nnoremap <Leader>cu :action CommentByLineComment<CR>
+
+nnoremap <Leader>br :action ToggleLineBreakpoint<CR>
+" see all breakpoints
+nnoremap <Leader>abr :action ViewBreakpoints<CR>
+
+nnoremap <Leader>fs :action ToggleFullScreen<CR>
+
+nnoremap <leader>sew :action SearchEverywhere<CR>
+
+nnoremap <Leader>cmd :action ChooseRunConfiguration<CR>
+
+nnoremap <Leader>sel :action ActivateTerminalToolWindow<CR>
+" <C-S-F<F4>> close windows just popup
+nnoremap <leader>cw :action CloseActiveTab<CR>
+" <C-j>
+inoremap <C-j> <ESC>:action InsertLiveTemplate<CR>
+
+" Tab operation
+noremap <tab> gt
+noremap <S-tab> gT
+
+" ==================================================
+" Emulated Vim Plugins
+" ==================================================
+set surround
+
