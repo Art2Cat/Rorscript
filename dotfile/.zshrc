@@ -98,8 +98,9 @@ source $ZSH/oh-my-zsh.sh
 	# alias zshconfig="mate ~/.zshrc"
 	# alias ohmyzsh="mate ~/.oh-my-zsh"
 
+	export GOROOT=/usr/local/go
 	export RUST_BIN=$HOME/.cargo/bin
-	export PATH=$RUST_BIN:$PATH
+	export PATH=$RUST_BIN:$GOROOT/bin:$PATH
 
 	export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
