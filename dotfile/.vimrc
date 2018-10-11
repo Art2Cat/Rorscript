@@ -191,7 +191,7 @@ nnoremap <slient> <F8> :AsyncRun -raw -cwd=$(VIM_FILEPATH) $(VIM_FILEDIR)/$(VIM_
 let g:better_whitespace_enable=1
 let g:strip_whitespace_on_save=1
 
-au BufWrite * :Autoformat
+noremap <F3> :Autoformat<CR>
 
 let g:indent_guides_enable_on_vim_startup=1
 
