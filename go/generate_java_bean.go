@@ -13,7 +13,7 @@ import (
 )
 
 type bean struct {
-	BeanId   string     `xml:"id,attr"`
+	BeanID   string     `xml:"id,attr"`
 	RefClass string     `xml:"class,attr"`
 	Parent   string     `xml:"parent,attr"`
 	Fields   []property `xml:"property"`
@@ -22,10 +22,6 @@ type bean struct {
 type property struct {
 	Name string `xml:"name,attr"`
 	Ref  string `xml:"ref,attr"`
-}
-
-func (jb *bean) SetBeanId(beanId string) {
-	jb.BeanId = beanId
 }
 
 func check(e error) {
@@ -49,10 +45,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var beans []bean
-	walkPath(dir, &beans)
+	
+	beans := findBeans(dir)
 	if len(beans) > 0 {
-		toXML(filepath.Join(dir, "test.xml"), beans)
+		beanToXML(filepath.Join(dir, "test.xml"), beans)
 	} else {
 		fmt.Println("empty beans")
 	}
@@ -69,7 +65,7 @@ func firstLower(str string) string {
 	return str
 }
 
-func toXML(file string, beans []bean) {
+func beanToXML(file string, beans []bean) {
 
 	xmlWriter, err := os.OpenFile(file, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if err != nil {
@@ -89,15 +85,16 @@ func toXML(file string, beans []bean) {
 	}
 }
 
-func walkPath(dir string, beans *[]bean) {
+func findBeans(dir string) []bean {
 
+	beans := make([]bean,5 )
 	walkErr := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			log.Fatalf("Prevent panic by handling failure accessing a path%q: %v\n", dir, err)
 			return err
 		}
 		if info.Mode().IsRegular() && strings.Contains(info.Name(), ".java") {
-			*beans = append(*beans, *loadJava(path))
+			beans = append(beans, *loadJava(path))
 		}
 		return nil
 	})
@@ -105,10 +102,11 @@ func walkPath(dir string, beans *[]bean) {
 		log.Fatalf("Error walking the path %q: %v\n", dir, walkErr)
 	}
 
+	return beans
 }
 
-func loadJava(file_path string) *bean {
-	data, err := ioutil.ReadFile(file_path)
+func loadJava(filePath string) *bean {
+	data, err := ioutil.ReadFile(filePath)
 	check(err)
 	b := new(bean)
 	var fields []property
@@ -122,7 +120,7 @@ func loadJava(file_path string) *bean {
 	checkPatternCompile(err)
 	extResult := extRex.FindStringSubmatch(string(data))
 	if len(extResult) > 0 {
-		b.BeanId = firstLower(extResult[1])
+		b.BeanID = firstLower(extResult[1])
 		b.RefClass = b.RefClass + "." + extResult[1]
 		if extResult[2] != "" {
 			b.Parent = firstLower(extResult[2])
