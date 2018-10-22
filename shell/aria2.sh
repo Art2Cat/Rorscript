@@ -32,10 +32,21 @@ r = requests.get(trackerlist_url, allow_redirects=True)
 content = r.content.replace(str.encode("\n\n"), str.encode(","), -1)
 bt_tracker = "bt-tracker={}".format(content.decode("utf-8"))
 aria2_conf_path = os.path.join("~/.aria2/", "aria2.conf")
-if os.path.exists(aria2_conf_path):
-    updated_data = get_update_data(aria2_conf_path, bt_tracker)
-    with open(aria2_conf_path, "w", encoding="utf-8") as writer:
-        writer.write(updated_data)
+if not os.path.exists(aria2_conf_path):
+    print("aria2.conf did not exists: " + aria2_conf_path)
+    exit()
+
+updated_data = get_update_data(aria2_conf_path, bt_tracker)
+try:
+    back_file_path = aria2_conf_path + ".bak"
+    if os.path.exists(back_file_path):
+        os.remove(back_file_path)
+        os.rename(aria2_conf_path, back_file_path)
+except Exception as e:
+    print(e)
+    exit()
+with open(aria2_conf_path, "w", encoding="utf-8") as writer:
+    writer.write(updated_data)
 
 EOF
 
