@@ -1,18 +1,19 @@
 #!/bin/bash
 
-sudo apt update
 
-sudo apt install build-essential cmake -y
-
-sudo apt install python-dev python3-dev -y
-
+YCM=~/.vim/pluggedYouCompleteMe
 cd ~/.vim/plugged
 
-git clone https://github.com/Valloric/YouCompleteMe.git
+if [ ! -d $YCM ]; then
+    sudo apt update
+    sudo apt install build-essential cmake -y
+    sudo apt install python-dev python3-dev -y
+    git clone https://github.com/Valloric/YouCompleteMe.git $YCM
+fi
 
-cd ~/.vim/plugged/YouCompleteMe
+cd $YCM
 
 git submodule update --init --recursive
 
-./install.py --clang-completer --rust-completer
+python3 ./install.py --clang-completer --rust-completer
 #--go-completer
