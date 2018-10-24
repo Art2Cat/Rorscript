@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-YCM=~/.vim/pluggedYouCompleteMe
+YCM=~/.vim/plugged/YouCompleteMe
 cd ~/.vim/plugged
 
 if [ ! -d $YCM ]; then
@@ -15,5 +15,4 @@ cd $YCM
 
 git submodule update --init --recursive
 
-python3 ./install.py --clang-completer --rust-completer
-#--go-completer
+python3 ./install.py --clang-completer --rust-completer --go-completer

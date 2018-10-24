@@ -40,7 +40,7 @@ def make_buffer_by_thread_name(buffer_dir, file_path):
         buffer_name = "buffer" + str(offset)
         offset += 1
         buffer_file_name = buffer_name
-        rex_pattern = "(\["+thread_name+"\])"
+        rex_pattern = r"(\["+thread_name+r"\])"
         tmp_rex = re.compile(rex_pattern)
         with open(os.path.join(buffer_dir, buffer_file_name), "w") as buffer_file:
             with open(file_path, "r") as log_file:
@@ -76,12 +76,14 @@ def remove_buffer_dir(buffer_dir):
 
 
 def rearrange(current_dir):
-    log_files = [file for file in os.listdir(current_dir) if ".log" in file and "arranged" not in file]
+    log_files = [file for file in os.listdir(
+        current_dir) if ".log" in file and "arranged" not in file]
     for file_name in log_files:
         print("rearrange log file: " + file_name)
         buffer_dir = os.path.join(current_dir, "buffer")
         make_buffer_dir(buffer_dir)
-        combined_file_path = os.path.join(os.path.abspath("."), "arranged_" + file_name)
+        combined_file_path = os.path.join(
+            os.path.abspath("."), "arranged_" + file_name)
         if os.path.exists(combined_file_path):
             os.remove(combined_file_path)
         file_path = os.path.join(current_dir, file_name)

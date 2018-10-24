@@ -5,7 +5,7 @@ function start_aria2 {
 	# update bt tracker before start aria2
 	python3 ~/Rorscript/python/update_bt_tracker.py &
 
-	nohup aria2c -c &>~/.aria2/aria2.log &
+	nohup aria2c --enable-rpc --rpc-listen-all -c &>~/.aria2/aria2.log &
 }
 
 function stop_aria2 {
