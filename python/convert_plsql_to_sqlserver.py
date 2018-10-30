@@ -6,7 +6,7 @@ import re
 import time
 
 
-def replace(input_file, output, tables):
+def replace(input_file, output):
     with open(input_file, 'r') as reader:
         replaced = ""
         data = reader.read()
@@ -35,7 +35,7 @@ def main(path: str):
                 output_file = os.path.join(
                     root, "{} - output.xml".format(file_name))
                 print(file_path)
-                replace(input_file, output_file, tables)
+                replace(input_file, output_file)
 
 
 if __name__ == "__main__":
