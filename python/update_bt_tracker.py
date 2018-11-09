@@ -26,27 +26,27 @@ def get_update_data(path: str, bt_tracker: str):
 trackerlist_url = "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt"
 
 r = requests.get(trackerlist_url, allow_redirects=True)
+if r.content is None:
+    print("respone is empty!")
+    exit()
 content = r.content.replace(str.encode("\n\n"), str.encode(","), -1)
-# print(r.content)
 bt_tracker = "bt-tracker={}".format(content.decode("utf-8"))
-print(bt_tracker)
-aria2_conf_path = PosixPath("~/.aria2/aria2.conf")
-# aria2_conf_path = os.path.expanduser("~/.aria2/aria2.conf")
+current_dir = PosixPath(".")
+aria2_conf_path = Path(current_dir.home())
+aria2_conf_path = aria2_conf_path.joinpath(".aria2/aria2.conf")
 if not aria2_conf_path.exists():
-    print("aria2.conf did not exists: " + aria2_conf_path.absolute())
+    print("aria2.conf did not exists")
     exit()
 
 updated_data = get_update_data(aria2_conf_path, bt_tracker)
 try:
-    back_file_path = aria2_conf_path.joinpath(".bak")
+    back_file_path = Path(str(aria2_conf_path.absolute()
+                              ).replace(".conf", ".conf.bak"))
     if back_file_path.exists:
         back_file_path.unlink()
         aria2_conf_path.rename(back_file_path)
-        # os.remove(back_file_path)
-        # os.rename(aria2_conf_path, back_file_path)
 except Exception as e:
     print(e)
-    exit()
+    aria2_conf_path.rename(back_file_path)
+
 aria2_conf_path.open("w", encoding="utf-8").write(updated_data)
-# with open(aria2_conf_path, "w", encoding="utf-8") as writer:
-# writer.write(updated_data)
