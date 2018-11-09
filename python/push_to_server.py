@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import os
 from datetime import datetime
 from paramiko import SSHClient
 from scp import SCPClient
@@ -33,12 +34,25 @@ def build(source_dir: str):
     execute(cmd)
 
 
-def push():
+def push(source_dir: str):
     ssh = SSHClient()
     ssh.load_system_host_keys()
     ssh.connect('user@server:path')
-    with SCPClient(ssh.get_transport()) as scp:
+
+    # Define progress callback that prints the current percentage completed for the file
+    def progress(filename, size, sent):
+        sys.stdout.write("%s\'s progress: %.2f%%   \r" %
+                         (filename, float(sent)/float(size)*100))
+
+    with SCPClient(ssh.get_transport(), progress=progress) as scp:
         scp.put('my_file.txt', 'my_file.txt')
+
+    for root, _, files in os.walk(source_dir):
+        for file in files:
+            new_dir = os.path.join(root, os.path.basename(file))
+            # print(file)
+            if "target" in new_dir and ".jar" in new_dir:
+                print(new_dir)
 
 
 def main():
@@ -48,7 +62,7 @@ def main():
 if __name__ == "__main__":
     start_time = datetime.now()
     if len(sys.argv) < 2:
-        print("use the script like: %s code_dir remote_host target_idr" %
+        print("use the script like: %s code_dir remote_host target_dir" %
               sys.argv[0])
         sys.exit()
 
