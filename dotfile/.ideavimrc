@@ -44,7 +44,7 @@ set cursorline      " highlight current line"
 set cursorcolumn        "highlight current column"
 set nu
 set cmdheight=5
-
+set keep-english-in-normal
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
