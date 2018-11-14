@@ -31,9 +31,9 @@ def execute(command):
     # Poll process for new output until finished
     while True:
         next_line = process.stdout.readline()
-        if next_line == '' and process.poll() is not None:
+        if next_line == b'' and process.poll() is not None:
             break
-        sys.stdout.write(next_line)
+        sys.stdout.write(str(next_line))
         sys.stdout.flush()
 
     output = process.communicate()[0]
@@ -44,12 +44,6 @@ def execute(command):
     else:
         pass
         # raise ProcessException(command, exit_code, output)
-
-
-def build(source_dir: str):
-    cmd = 'cd {} && mvn clean install "-Dmaven.test.skip=true"'.format(
-        source_dir)
-    execute(cmd)
 
 
 def push(source_path: str, ssh: SSHClient):
@@ -100,6 +94,9 @@ def main():
     zip_file_path = os.path.join(current_dir, filename)
     shutil.make_archive(filename, 'zip', zip_file_path)
 
+    dbupgrade_path = os.path.join(zip_file_path, "bin", "deploy", "dbupgrade.bat")
+
+    execute("{} 192.168.1.44 markit markit123 {}".format(dbupgrade_path, dbschema))
     ssh_info = SSHInfo("192.168.0.59", password="abc@123")
     ssh = SSHClient()
     ssh.load_system_host_keys()
@@ -111,22 +108,18 @@ def main():
     commands = ['bash -c "unzip {}.zip -d {} && rm {}.zip"'.format(filename, target_path, filename),
                 'cd {} && ./deploy.sh {}'.format(target_path, filename)]
     execute_command(ssh, commands)
-    # unzip_cmd = "bash -c 'unzip {}.zip -d {} && rm {}.zip' &".format(filename, target_path, filename)
-    # ssh.exec_command(unzip_cmd)
-    #     # ssh.exec_command(unzip_cmd, timeout=15)
-    #     # build_cmd = "cd {} && mvn clean install -Dmaven.test.skip=true".format(target_path)
-    #     # remote_unzip(ssh, "{}.zip".format(filename), target_path)
 
 
 if __name__ == "__main__":
     start_time = datetime.now()
-    if len(sys.argv) < 1:
-        print("use the script like: %s code_dir" %
+    if len(sys.argv) < 2:
+        print("use the script like: %s code_dir dbschema" %
               sys.argv[0])
         sys.exit()
 
     current_dir = os.path.abspath(".")
     filename = sys.argv[1]
+    dbschema = sys.argv[2]
     main()
     # # asyncio.run(main(loop))
 
