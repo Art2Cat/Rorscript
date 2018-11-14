@@ -1,11 +1,11 @@
-import asyncio
 import os
 import shutil
+import socket
 import subprocess
 import sys
 from datetime import datetime
 
-from paramiko import SSHClient, WarningPolicy
+from paramiko import SSHClient, WarningPolicy, SSHException
 from scp import SCPClient
 
 
@@ -30,16 +30,16 @@ def execute(command):
 
     # Poll process for new output until finished
     while True:
-        nextline = process.stdout.readline()
-        if nextline == '' and process.poll() is not None:
+        next_line = process.stdout.readline()
+        if next_line == '' and process.poll() is not None:
             break
-        sys.stdout.write(nextline)
+        sys.stdout.write(next_line)
         sys.stdout.flush()
 
     output = process.communicate()[0]
     exit_code = process.returncode
 
-    if (exit_code == 0):
+    if exit_code == 0:
         return output
     else:
         pass
@@ -52,51 +52,70 @@ def build(source_dir: str):
     execute(cmd)
 
 
-async def push(source_path: str, ssh: SSHClient):
+def push(source_path: str, ssh: SSHClient):
     # Define progress callback that prints the current percentage completed for the file
-    def progress(filename, size, sent):
+    def progress(file_name, size, sent):
         sys.stdout.write("%s\'s progress: %.2f%%   \r" %
-                         (filename, float(sent) / float(size) * 100))
+                         (file_name, float(sent) / float(size) * 100))
 
     with SCPClient(ssh.get_transport(), progress=progress) as scp:
-        await scp.put(source_path, source_path)
+        scp.put(source_path, source_path)
 
 
-async def remote_unzip(ssh: SSHClient, source_path: str, target_dir: str):
-    cmd = "unzip {} -d {} && rm {}".format(source_path, target_dir, source_path)
-    await ssh.exec_command(cmd)
+def execute_command(client, commands):
+    """Execute a command on the remote host.Return a tuple containing
+    an integer status and a two strings, the first containing stdout
+        and the second containing stderr from the command."""
+    result_flag = True
+    command = ""
+    try:
+        for cmd in commands:
+            command = cmd
+            print("Executing command --> {}".format(command))
+            _, stdout, stderr = client.exec_command(command)
+            ssh_output = stdout.read()
+            ssh_error = stderr.read()
+            for i in ssh_output.split(b"\n"):
+                print(str(i))
+
+            if ssh_error:
+                print("Problem occurred while running command:" + command + " The error is " + str(ssh_error))
+                result_flag = False
+            else:
+                print("Command execution completed successfully", command)
+                result_flag = True
+    except socket.timeout as e:
+        print("Command timed out.", command)
+        print(e)
+        client.close()
+        result_flag = False
+    except SSHException:
+        print("Failed to execute the command!", command)
+        client.close()
+        result_flag = False
+    return result_flag
 
 
-async def remote_build(ssh: SSHClient, target_dir: str):
-    cmd = "cd {} && mvn clean install -Dmaven.test.skip=true".format(target_dir)
-    await ssh.exec_command(cmd)
-
-
-async def remote_deploy(ssh: SSHClient, target_dir: str):
-    cmd = "cd {} && mvn clean install -Dmaven.test.skip=true".format(target_dir)
-    await ssh.exec_command(cmd)
-
-
-def main(loop, filename):
+def main():
     zip_file_path = os.path.join(current_dir, filename)
     shutil.make_archive(filename, 'zip', zip_file_path)
 
-    ssh_info = SSHInfo()
+    ssh_info = SSHInfo("192.168.0.59", password="abc@123")
     ssh = SSHClient()
     ssh.load_system_host_keys()
     ssh.set_missing_host_key_policy(WarningPolicy())
     ssh.connect(*ssh_info)
     target_path = "/home/lp_app/lp_live/{}".format(filename)
-    remote_tasks = [push("{}.zip".format(filename), ssh), remote_unzip(ssh, "{}.zip".format(filename), target_path)]
-    futures = [asyncio.ensure_future(t, loop=loop) for t in remote_tasks]
-    gathered = asyncio.gather(*futures, loop=loop, return_exceptions=True)
-    loop.run_until_complete(gathered)
-    #
-    # for fut in futures:
-    #     try:
-    #         yield fut.result()
-    #     except Exception as e:
-    #         yield repr(e)
+
+    push("{}.zip".format(filename), ssh)
+    commands = ['bash -c "unzip {}.zip -d {} && rm {}.zip"'.format(filename, target_path, filename),
+                'cd {} && ./deploy.sh {}'.format(target_path, filename)]
+    execute_command(ssh, commands)
+    # unzip_cmd = "bash -c 'unzip {}.zip -d {} && rm {}.zip' &".format(filename, target_path, filename)
+    # ssh.exec_command(unzip_cmd)
+    #     # ssh.exec_command(unzip_cmd, timeout=15)
+    #     # build_cmd = "cd {} && mvn clean install -Dmaven.test.skip=true".format(target_path)
+    #     # remote_unzip(ssh, "{}.zip".format(filename), target_path)
 
 
 if __name__ == "__main__":
@@ -108,8 +127,7 @@ if __name__ == "__main__":
 
     current_dir = os.path.abspath(".")
     filename = sys.argv[1]
-    loop = asyncio.get_event_loop()
-    main(loop, filename)
+    main()
     # # asyncio.run(main(loop))
 
     print("done")
