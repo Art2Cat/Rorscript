@@ -15,4 +15,4 @@ cd $YCM
 
 git submodule update --init --recursive
 
-python3 ./install.py --clang-completer --rust-completer --go-completer
+python3 ./install.py --clang-completer --go-completer
