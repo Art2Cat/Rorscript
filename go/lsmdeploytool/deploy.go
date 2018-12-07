@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"compress/flate"
 	"flag"
 	"fmt"
@@ -20,9 +19,6 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-/* TCP network type */
-const netTCP = "tcp"
-
 var (
 	wg        sync.WaitGroup
 	upgradedb bool
@@ -34,26 +30,51 @@ func init() {
 
 }
 
-func main() {
-	flag.Parse()
+func checkArgs(args []string, size int) bool {
+	return len(args) < size
+}
 
-	if len(os.Args) < 1 {
-		log.Fatalf(`Use %s in CMD or PowerShell,
-		1. normal: %s code_dir
-		2. upgrade database: %s -u code_dir db_schema
+func main() {
+	start := time.Now()
+	flag.Parse()
+	argSize := 1
+
+	if upgradedb == true {
+		argSize = 2
+	}
+
+	if checkArgs(flag.Args(), argSize) {
+		log.Fatalf(`Use %[1]s in CMD or PowerShell,
+		1. normal: %[1]s code_dir
+		2. upgrade database: %[1]s -u code_dir db_schema
+		3. needs help: %[1]s -help 
 		`, os.Args[0])
 		os.Exit(-1)
 	}
 
-	codeDir := os.Args[1]
+	codeDir := flag.Arg(0)
+	fmt.Println(codeDir)
 	dir, err := os.Getwd()
 	if err != nil {
 		log.Fatalln("directory don't exists")
 		os.Exit(-1)
 	}
+	os.Chdir(codeDir)
+	cmd := exec.Command("mvn", "clean")
+	stdoutStderr, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Fatalln(err)
+		os.Exit(-1)
+	}
+	fmt.Printf("%s\n", stdoutStderr)
+
+	os.Chdir(dir)
+
 	fmt.Println("start archive files...")
 	sourceCodePath := filepath.Join(dir, codeDir)
-	files := listCompressFiles(sourceCodePath)
+
+	files := make([]string, 0)
+	files = append(files, sourceCodePath)
 	fmt.Printf("total: %d files.\n", len(files))
 	zipFileName := fmt.Sprintf("%s.zip", codeDir)
 	zipFilePath := filepath.Join(dir, zipFileName)
@@ -73,19 +94,12 @@ func main() {
 
 	if upgradedb == true {
 		// update database
-		if len(os.Args) < 2 {
-			log.Fatalf(`Use %s in CMD or PowerShell,
-			1. normal: %s code_dir
-			2. upgrade database: %s -u code_dir db_schema
-			`, os.Args[0])
-			os.Exit(-1)
-		}
 		fmt.Println("start upgrade database...")
 		dbupgradePath := filepath.Join(sourceCodePath, "bin", "deploy")
 		fmt.Printf("cd: %s\n", dbupgradePath)
 		os.Chdir(dbupgradePath)
 
-		cmd := exec.Command("dbupgrade.bat", "192.168.1.44", "markit", "markit@123", os.Args[2])
+		cmd := exec.Command("dbupgrade.bat", "192.168.1.44", "root", "password", flag.Arg(1))
 		stdoutStderr, err := cmd.CombinedOutput()
 		if err != nil {
 			log.Fatalln(err)
@@ -99,7 +113,7 @@ func main() {
 		Hostname: "192.168.0.59",
 		Port:     22,
 		Username: "root",
-		Password: "abc@123",
+		Password: "password",
 	}
 
 	config := &ssh.ClientConfig{
@@ -114,7 +128,7 @@ func main() {
 
 	// connect
 	var client *ssh.Client
-	client, err = ssh.Dial(netTCP, info.getAddress(), config)
+	client, err = ssh.Dial("tcp", info.getAddress(), config)
 	if err != nil {
 		log.Fatalf("create ssh client failed: %v ", err)
 		os.Exit(-1)
@@ -125,7 +139,9 @@ func main() {
 	fmt.Println("start copy files to server...")
 	fmt.Printf("cd: %s\n", dir)
 	os.Chdir(dir)
-	err = copyFileToRemote(client, zipFilePath, zipFileName)
+	fmt.Println(zipFilePath)
+	dst := fmt.Sprintf("/home/lp_app/lp_live/%s", zipFileName)
+	err = copyFileToRemote(client, zipFilePath, dst)
 	if err != nil {
 		log.Fatalf("copy file to remote failed: %v", err)
 		os.Exit(-1)
@@ -139,26 +155,24 @@ func main() {
 	rmOldCode := "rm -rf " + targetPath
 	cmds = append(cmds, rmOldCode)
 
-	unzipCode := fmt.Sprintf("unzip %s -d %s", zipFileName, targetPath)
+	unzipCode := fmt.Sprintf("unzip /home/lp_app/lp_live/%s -d /home/lp_app/lp_live/", zipFileName)
 	cmds = append(cmds, unzipCode)
 
-	rmZipFile := "rm -f " + zipFileName
+	rmZipFile := "rm -f /home/lp_app/lp_live/" + zipFileName
 	cmds = append(cmds, rmZipFile)
 
-	deploy := fmt.Sprintf("cd /home/lp_app/lp_live && ./deploy.sh %s", codeDir)
-	cmds = append(cmds, deploy)
+	build := fmt.Sprintf("cd /home/lp_app/lp_live/%s && mvn clean install -Dmaven.test.skip=true", codeDir)
+	cmds = append(cmds, build)
 
-	for _, cmd := range cmds {
-		wg.Add(1)
-		fmt.Println("execute -----> " + cmd)
-		err = executeRemoteCmd(client, cmd)
-		if err != nil {
-			log.Fatalf("execute command %s failed: %v", cmd, err)
-			os.Exit(-1)
-		}
-	}
-	wg.Wait()
+	deploy := fmt.Sprintf("cd /home/lp_app/lp_live/ && ./deploy.sh %s", codeDir)
+	cmds = append(cmds, deploy)
+	cmds = append(cmds, "exit")
+
+	executeRemoteCmd(client, cmds)
 	fmt.Println("Done")
+	end := time.Now()
+	duriation := end.Sub(start)
+	fmt.Printf("total time: %v\n", duriation.Seconds())
 }
 
 type sshInfo struct {
@@ -168,8 +182,8 @@ type sshInfo struct {
 	Password string // password
 }
 
-func (sshInfo *sshInfo) getAddress() string {
-	return fmt.Sprintf("%s:%d", sshInfo.Hostname, sshInfo.Port)
+func (s *sshInfo) getAddress() string {
+	return fmt.Sprintf("%s:%d", s.Hostname, s.Port)
 }
 
 func listCompressFiles(dir string) []string {
@@ -180,7 +194,7 @@ func listCompressFiles(dir string) []string {
 			log.Fatalf("Prevent panic by handling failure accessing a path%q: %v\n", dir, err)
 			return err
 		}
-		if !strings.Contains(path, "target") && !strings.Contains(path, ".svn") {
+		if !strings.Contains(path, "target") && !strings.Contains(path, ".svn") && !strings.Contains(path, "archive") && !strings.Contains(path, "db-scripts") {
 			files = append(files, path)
 		}
 		return nil
@@ -240,28 +254,46 @@ func copyFileToRemote(client *ssh.Client, sourcePath, destPath string) error {
 	return nil
 }
 
-func executeRemoteCmd(client *ssh.Client, cmd string) error {
-	defer wg.Done()
-	outputChannel := make(chan error)
+func executeRemoteCmd(client *ssh.Client, cmds []string) {
+	sess, err := client.NewSession()
+	if err != nil {
+		log.Fatal("Failed to create session: ", err)
+	}
+	defer sess.Close()
 
-	go func() {
-		session, err := client.NewSession()
-		if err != nil {
-			log.Fatalf("create session failed: %v", err)
-			outputChannel <- err
-		}
-		defer session.Close()
-		var stdoutBuf bytes.Buffer
-		session.Stdout = &stdoutBuf
+	// StdinPipe for commands
+	stdin, err := sess.StdinPipe()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-		err = session.Run(cmd)
+	// Uncomment to store output in variable
+	// var b bytes.Buffer
+	// sess.Stdout = &b
+	//sess.Stderr = &amp;b
+
+	// Enable system stdout
+	// Comment these if you uncomment to store in variable
+	sess.Stdout = os.Stdout
+	sess.Stderr = os.Stderr
+
+	// Start remote shell
+	err = sess.Shell()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// send the commands
+	for _, cmd := range cmds {
+		_, err = fmt.Fprintf(stdin, "%s\n", cmd)
 		if err != nil {
-			log.Fatalf("run cmd %s failed: %v", cmd, err)
-			outputChannel <- err
-		} else {
-			fmt.Println(fmt.Sprintf("%s :\n %s", cmd, stdoutBuf.String()))
-			outputChannel <- nil
+			log.Fatal(err)
 		}
-	}()
-	return <-outputChannel
+	}
+
+	// Wait for sess to finish
+	err = sess.Wait()
+	if err != nil {
+		log.Fatal(err)
+	}
 }

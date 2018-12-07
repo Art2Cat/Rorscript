@@ -11,5 +11,5 @@ require (
 	github.com/pkg/sftp v1.8.3
 	github.com/ulikunitz/xz v0.5.5 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
-	golang.org/x/crypto v0.0.0-20181112202954-3d3f9f413869 // indirect
+	golang.org/x/crypto v0.0.0-20181112202954-3d3f9f413869
 )
