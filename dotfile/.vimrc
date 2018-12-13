@@ -12,45 +12,42 @@ set guifont=Menlo:h14,DejaVu_Sans_Mono:h14
 set guifont=Menlo\ 14,DejaVu\ Sans\ Mono\ 14
 syntax on
 syntax enable
-set background=dark   "set background"
-" set termguicolors
-colorscheme dracula
-color dracula
-set nowrap  "set nowrap line"
-set fileformat=unix "fileformat unix 'lf'"
+set background=dark
+set nowrap
+set fileformat=unix
 set fileformats=unix,dos,mac
-set cindent     "indenct like C"
+set cindent
 set autoindent
 filetype indent on
 filetype plugin on
 set expandtab
-set tabstop=4   "set tab size 4"
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set history=200
 
-set showmatch   "show match parentheses"
-set scrolloff=5     "5 rows from the top and bottom"
-set laststatus=2    "Command line 2 lines"
+set showmatch
+set scrolloff=5
+set laststatus=2
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set enc=utf8
-set fencs=utf8,gbk,gb2312,gb18030      "file encoding"
+set fencs=utf8,gbk,gb2312,gb18030
 set encoding=utf-8
 set backspace=2
 set linespace=6
-set mouse=a     "enable mouse"
+set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
 set clipboard=unnamed
 set matchtime=5
-set ignorecase      "ignore upper or lower case"
+set ignorecase
 set incsearch
-set hlsearch        "search high light"
-set noexpandtab     "not allow expand table"
+set hlsearch
+set noexpandtab
 set whichwrap+=<,>,h,l
 set autoread
-set cursorline      " highlight current line"
-set cursorcolumn        "highlight current column"
+set cursorline
+set cursorcolumn
 set nu
 set cmdheight=5
 
@@ -84,9 +81,12 @@ Plug 'rust-lang/rust.vim', { 'as': 'rustvim' }
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 filetype on
+
+colorscheme dracula
 
 "YouCompleteMe configuration"
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
