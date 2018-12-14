@@ -8,8 +8,18 @@ noremap <leader>y "+y
 nmap <leader>p "+p
 
 set showtabline=1
-set guifont=Menlo:h14,DejaVu_Sans_Mono:h14
-set guifont=Menlo\ 14,DejaVu\ Sans\ Mono\ 14
+set guifont=Fira_Code_Retina:h12,DejaVu_Sans_Mono:h12
+set guifont=Fira\ Code\ Retina\ 12,DejaVu\ Sans\ Mono\ 12
+
+if has('gui_running')
+    set guioptions-=T  " no toolbar
+    if has('gui_win32')
+      set guifont=Fira_Code_Retina:h12,DejaVu_Sans_Mono:h12:cANSI
+    else
+      set guifont=Fira\ Code\ Retina\ 12,DejaVu\ Sans\ Mono\ 12
+    endif
+  endif
+
 syntax on
 syntax enable
 set background=dark
@@ -226,4 +236,12 @@ nmap <F7> :TagbarToggle<CR>
 let g:airline#extensions#tabline#enabled = 1
 
 let g:rustfmt_autosave = 1
+
+let g:go_fmt_command = "goimports"
+let g:go_addtags_transform = "camelcase"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
