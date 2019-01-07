@@ -6,5 +6,5 @@ do
 	USAGE=`free -m | awk 'NR==3{print $4}'`
 	if [ $USAGE -lt 20 ]; then
 		reboot
-		fi
-	done
+	fi
+done
