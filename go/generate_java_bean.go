@@ -9,8 +9,14 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
 )
+
+type BeanXML struct {
+	lock  *sync.Mutex
+	beans []bean
+}
 
 type bean struct {
 	BeanID   string     `xml:"id,attr"`
@@ -38,6 +44,13 @@ func checkPatternCompile(e error) {
 	}
 }
 
+var beanXML = &BeanXML{
+	lock:  &sync.Mutex{},
+	beans: make([]bean, 5),
+}
+
+var wg sync.WaitGroup
+
 func main() {
 	fmt.Println("vim-go")
 	start := time.Now()
@@ -45,8 +58,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
-	beans := findBeans(dir)
+
+	findBeans(dir)
+	wg.Wait()
+	beans := beanXML.beans
 	if len(beans) > 0 {
 		beanToXML(filepath.Join(dir, "test.xml"), beans)
 	} else {
@@ -67,7 +82,7 @@ func firstLower(str string) string {
 
 func beanToXML(file string, beans []bean) {
 
-	xmlWriter, err := os.OpenFile(file, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+	xmlWriter, err := os.OpenFile(file, os.O_CREATE|os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if err != nil {
 		panic(err)
 	}
@@ -85,16 +100,16 @@ func beanToXML(file string, beans []bean) {
 	}
 }
 
-func findBeans(dir string) []bean {
+func findBeans(dir string) {
 
-	beans := make([]bean,5 )
 	walkErr := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			log.Fatalf("Prevent panic by handling failure accessing a path%q: %v\n", dir, err)
 			return err
 		}
 		if info.Mode().IsRegular() && strings.Contains(info.Name(), ".java") {
-			beans = append(beans, *loadJava(path))
+			wg.Add(1)
+			go loadJava(path)
 		}
 		return nil
 	})
@@ -102,10 +117,10 @@ func findBeans(dir string) []bean {
 		log.Fatalf("Error walking the path %q: %v\n", dir, walkErr)
 	}
 
-	return beans
 }
 
-func loadJava(filePath string) *bean {
+func loadJava(filePath string) {
+	defer wg.Done()
 	data, err := ioutil.ReadFile(filePath)
 	check(err)
 	b := new(bean)
@@ -141,5 +156,9 @@ func loadJava(filePath string) *bean {
 		}
 		b.Fields = fields
 	}
-	return b
+	if len(b.BeanID) > 0 {
+		beanXML.lock.Lock()
+		beanXML.beans = append(beanXML.beans, *b)
+		beanXML.lock.Unlock()
+	}
 }
