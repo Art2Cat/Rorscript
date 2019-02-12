@@ -40,7 +40,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var steps []step
-	walkPath(dir, &steps)
+	walkPath(dir, steps)
 	if len(steps) > 0 {
 		toXML(filepath.Join(dir, "test1.xml"), steps)
 	} else {
@@ -79,7 +79,7 @@ func toXML(file string, steps []step) {
 	}
 }
 
-func walkPath(dir string, steps *[]step) {
+func walkPath(dir string, steps []step) {
 
 	walkErr := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -87,7 +87,7 @@ func walkPath(dir string, steps *[]step) {
 			return err
 		}
 		if info.Mode().IsRegular() && strings.Contains(info.Name(), ".csv") {
-			*steps = append(*steps, *analyzeFileName(info.Name()))
+			steps = append(steps, *analyzeFileName(info.Name()))
 		}
 		return nil
 	})
