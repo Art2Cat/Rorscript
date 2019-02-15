@@ -72,7 +72,6 @@ nnoremap <esc><esc> :noh<return>
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
@@ -83,46 +82,25 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Yggdroot/LeaderF'
 Plug 'skywind3000/asyncrun.vim' , { 'as': 'asyncrun' }
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tweekmonster/impsort.vim'
+Plug 'kien/ctrlp.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Art2Cat/vim-autoformat'
 Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim', { 'as': 'rustvim' }
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-commetary'
+Plug 'w0rp/ale'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 filetype on
 
 colorscheme dracula
-
-"YouCompleteMe configuration"
-let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-let g:ycm_rust_src_path=$RUST_SRC_PATH
-let g:ycm_confirm_extra_conf=1
-set completeopt=longest,menu
-let g:ycm_python_binary_path='python'
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments=1
-let g:ycm_collect_identifiers_from_tags_files=1
-let g:ycm_collect_identifiers_from_comments_and_strings=0
-let g:ycm_min_num_of_chars_for_completion=2
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_cache_omnifunc=0
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion='<C-Space>'
-let g:ycm_register_as_syntastic_checker=1
-let g:show_diagnostics_ui=1
-let g:ycm_enable_diagnostic_signs=1
-let g:ycm_enable_diagnostic_highlighting=1
-let g:ycm_always_populate_location_list=1
-let g:ycm_semantic_triggers={
-			\ 'c,cpp,python,java,go,erlang,perl,rust': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "NERDTree configuration""
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -235,7 +213,6 @@ nmap <F7> :TagbarToggle<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 
-let g:rustfmt_autosave = 1
 
 let g:go_fmt_command = "goimports"
 let g:go_addtags_transform = "camelcase"
@@ -244,4 +221,6 @@ let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+let g:python3_host_prog = '/usr/bin/python3'
 
