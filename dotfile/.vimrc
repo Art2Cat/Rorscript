@@ -224,3 +224,63 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 let g:python3_host_prog = '/usr/bin/python3'
 
+" ale options
+let g:ale_python_flake8_options = '--ignore=E129,E501,E302,E265,E241,E305,E402,W503'
+let g:ale_python_pylint_options = '-j 0 --max-line-length=120'
+let g:ale_list_window_size = 4
+let g:ale_sign_column_always = 0
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = '1'
+
+" Options are in .pylintrc!
+highlight VertSplit ctermbg=253
+
+let g:ale_sign_error = '‼'
+let g:ale_sign_warning = '∙'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = '0'
+let g:ale_lint_on_save = '1'
+nmap <silent> <C-M> <Plug>(ale_previous_wrap)
+nmap <silent> <C-m> <Plug>(ale_next_wrap)
+
+" mapping to make movements operate on 1 screen line in wrap mode
+function! ScreenMovement(movement)
+   if &wrap
+      return "g" . a:movement
+   else
+      return a:movement
+   endif
+endfunction
+
+" highlight python and self function
+autocmd BufEnter * syntax match Type /\v\.[a-zA-Z0-9_]+\ze(\[|\s|$|,|\]|\)|\.|:)/hs=s+1
+autocmd BufEnter * syntax match pythonFunction /\v[[:alnum:]_]+\ze(\s?\()/
+hi def link pythonFunction Function
+autocmd BufEnter * syn match Self "\(\W\|^\)\@<=self\(\.\)\@="
+highlight self ctermfg=239
+
+" jedi options
+let g:jedi#auto_initialization = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "1"
+let g:jedi#show_call_signatures_delay = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures_modes = 'i'  " ni = also in normal mode
+let g:jedi#enable_speed_debugging=0
+
+" Impsort option
+hi pythonImportedObject ctermfg=127
+hi pythonImportedFuncDef ctermfg=127
+hi pythonImportedClassDef ctermfg=127
+
+" vimgutter options
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_map_keys = 0
+ 
+" ctrl p options
+let g:ctrlp_custom_ignore = '\v\.(npy|jpg|pyc|so|dll)$'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
