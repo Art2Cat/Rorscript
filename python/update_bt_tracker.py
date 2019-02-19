@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding=utf-8 -*-
-import requests
 import re
 import subprocess
 import os
@@ -13,6 +12,8 @@ for package in pkgs:
         import package
     except ImportError as e:
         subprocess.check_call(["python3", '-m', 'pip', 'install', package])
+
+import requests
 
 
 def get_update_data(path: str, bt_tracker: str):
