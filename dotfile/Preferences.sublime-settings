@@ -1,0 +1,25 @@
+{
+	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
+	"font_face": "Fira Code Retina",
+	// or ** Retina, Regular, Bold...
+	"font_options":
+	[
+    	"gray_antialias",
+   		"subpixel_antialias"
+	],
+	"font_size": 13,
+	"line_padding_top": 1,
+	"http_proxy": "http://localhost:3213",
+	"https_proxy": "http://localhost:3213",
+	"ignored_packages":
+	[
+	],
+	"theme": "Adaptive.sublime-theme",
+	"vintage_use_clipboard": true,
+	"vintage_start_in_command_mode": true,
+	"vintage_ctrl_keys": true,
+	"auto_complete_triggers": [
+        {"selector": "text.html", "characters": "<"},
+        {"selector": "source.go", "characters": "."}
+    ],
+}
