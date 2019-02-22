@@ -2,7 +2,6 @@
 # -*- coding=utf-8 -*-
 import re
 import subprocess
-import os
 from pathlib import Path
 from pathlib import PosixPath
 
