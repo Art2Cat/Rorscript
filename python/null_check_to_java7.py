@@ -12,29 +12,35 @@ def add_import(content: str):
 
 
 def replace_is_null(content: str):
-    p = re.compile(r"\s?(?P<name>[\w._]+\((\))?)\s?==\s?null\s?", re.VERBOSE)
+    p = re.compile(
+        r"\s?(?P<name>[\w.\d\[\]_]+(\(\))?)\s?==\s?null\s?", re.VERBOSE)
     res = p.subn(r'Objects.isNull(\g<name>)', content)
     return res
 
 
 def replace_not_null(content: str):
-    p = re.compile(r"\s?(?P<name>[\w._]+(\(\))?)\s?!=\s?null\s?", re.VERBOSE)
+    p = re.compile(
+        r"\s?(?P<name>[\w.\d\[\]_]+(\(\))?)\s?!=\s?null\s?", re.VERBOSE)
     res = p.subn(r'Objects.nonNull(\g<name>)', content)
     return res
 
 
 def replace(file_path: Path):
+    state = set()
     rss = file_path.read_text(encoding="utf-8")
     rss = replace_is_null(rss)
+    state.add(rss[1])
     rss = replace_not_null(rss[0])
-    if rss[1] != 0:
-        rss = add_import(rss[0])
-    if rss[1] != 0:
+    state.add(rss[1])
+    if 0 not in state or len(state) == 2:
+        if "import java.util.Objects" not in rss[0]:
+            rss = add_import(rss[0])
         new = file_path.parent.joinpath(file_path.name + ".out")
         with open(str(new), "w", encoding="utf-8") as f:
             f.write(rss[0])
         if new.exists():
-            file_path.rename(file_path.parent.joinpath(file_path.name + ".old"))
+            file_path.rename(file_path.parent.joinpath(
+                file_path.name + ".old"))
             new.rename(file_path)
 
 
