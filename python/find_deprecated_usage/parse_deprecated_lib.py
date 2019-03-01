@@ -3,7 +3,7 @@
 from pathlib import Path
 from xml.dom import minidom
 
-from pre_work import wash_data
+from find_deprecated_usage.pre_work import wash_data, to_xml
 
 
 class Lib(object):
@@ -104,8 +104,9 @@ class DeprecatedClass():
         return '{}({!r}, {!r})'.format(class_name, *self)
 
 
-def parse(dir_path: Path):
-    # wash_data(dir_path.joinpath("deprecated.txt"))
+def parse():
+    washed = wash_data(Path.cwd().joinpath("export.txt"))
+    to_xml(washed)
 
     mydoc = minidom.parse('deprecated.xml')
 
@@ -130,9 +131,9 @@ def parse(dir_path: Path):
                 pkg.classes.add(clz)
             lib.packages.add(pkg)
         libs.add(lib)
-    for l in libs:
-        print(l)
+
+    return libs
 
 
 if __name__ == "__main__":
-    parse(Path.cwd())
+    parse()

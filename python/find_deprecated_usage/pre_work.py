@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding=utf-8 -*-
 import re
-from pathlib import Path
-from collections import UserString
 import xml.etree.ElementTree as ET
+from collections import UserString
+from pathlib import Path
 from xml.dom import minidom
 
 
@@ -42,10 +42,6 @@ def remove_empty_line(content: str):
             new_rss += line.rstrip()
         new_rss += "\n"
     return str(new_rss)
-
-
-def concatenate(org, new: str):
-    org += new
 
 
 def add_lib_tag(content: str):
@@ -156,14 +152,14 @@ def to_xml(content: str):
             if clz is not None:
                 name = get_method_name(line)
                 if name is not None and name[0].islower():
+                    """skip constructor method"""
                     mtd = ET.SubElement(clz, "mtd")
                     mtd.text = name
 
-    # mydata = ET.tostring(data)
     with open(str(Path.cwd().joinpath("deprecated.xml")), "w") as f:
         f.write(prettify(data))
 
 
 if __name__ == "__main__":
-    washed = wash_data(Path.cwd().joinpath("deprecated.txt"))
+    washed = wash_data(Path.cwd().joinpath("export.txt"))
     to_xml(washed)
