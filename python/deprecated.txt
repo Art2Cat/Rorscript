@@ -1,0 +1,1952 @@
+        Maven: com.fasterxml:classmate:1.3.0  
+            com.fasterxml.classmate.types  
+                class: ResolvedObjectType.java  
+                    ResolvedObjectType(Class<?>, TypeBindings, ResolvedObjectType, List<ResolvedType>)  
+                         
+                    ResolvedObjectType(Class<?>, TypeBindings, ResolvedObjectType, ResolvedType[])  
+                         
+        Maven: com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8  
+            com.microsoft.sqlserver.jdbc  
+                class: SQLServerBlob.java  
+                    SQLServerBlob(SQLServerConnection, byte[])  
+                        
+                class: SQLServerCallableStatement.java  
+                    getBigDecimal(int, int)  
+                        
+                    getBigDecimal(String, int)  
+                        
+                class: SQLServerClob.java  
+                    SQLServerClob(SQLServerConnection, String)  
+                        
+                class: SQLServerPreparedStatement.java  
+                    setUnicodeStream(int, InputStream, int)  
+                        
+                class: SQLServerResultSet.java  
+                    getBigDecimal(int, int)  
+                        
+                    getBigDecimal(String, int)  
+                        
+                    getUnicodeStream(int)  
+                        
+                    getUnicodeStream(String)  
+                        
+        Maven: io.springfox:springfox-core:2.4.0  
+            springfox.documentation.builders  
+                class: ApiInfoBuilder.java  
+                    contact(String)  
+                        
+            springfox.documentation.service  
+                class: ApiInfo.java  
+                    ApiInfo(String, String, String, String, String, String, String)  
+                        
+        Maven: io.springfox:springfox-spi:2.4.0  
+            springfox.documentation.spi.service  
+                class: ResourceGroupingStrategy.java  
+                    getResourceDescription(RequestMappingInfo, HandlerMethod)  
+                        
+                    getResourcePosition(RequestMappingInfo, HandlerMethod)  
+                        
+                    
+            springfox.documentation.spi.service.contexts  
+                class: DocumentationContext.java  
+                    getResourceGroupingStrategy()  
+                        
+                class: DocumentationContextBuilder.java  
+                    withResourceGroupingStrategy(ResourceGroupingStrategy)  
+                        
+        Maven: io.springfox:springfox-swagger-common:2.4.0  
+            springfox.documentation.swagger.web  
+                class: ClassOrApiAnnotationResourceGrouping.java  
+                    
+        Maven: io.swagger:swagger-annotations:1.5.6  
+            io.swagger.annotations  
+                class: Api.java  
+                    description()  
+                    basePath()
+                    position()
+                class: ApiOperation.java
+                    position()  
+        Maven: io.swagger:swagger-models:1.5.6
+            io.swagger.models  
+                class: SecurityRequirement.java  
+                    SecurityRequirement(String)  
+                        
+                    getName()  
+                        
+                    setName(String)  
+                        
+                    getScopes()  
+                        
+                    setScopes(List<String>)  
+                        
+                class: Swagger.java  
+                    getSecurityRequirement()  
+                        
+                    setSecurityRequirement(List<SecurityRequirement>)  
+                        
+                    addSecurityDefinition(SecurityRequirement)  
+                        
+        Maven: junit:junit:4.12  
+            junit.framework  
+                class: Assert.java  
+                    
+            org.junit  
+                class: Assert.java  
+                    assertEquals(double, double)  
+                        
+                    assertEquals(String, double, double)  
+                        
+                    assertEquals(String, Object[], Object[])  
+                        
+                    assertEquals(Object[], Object[])  
+                        
+            org.junit.experimental.max  
+                class: MaxCore.java  
+                    forFolder(String)  
+                        
+            org.junit.internal  
+                class: AssumptionViolatedException.java  
+                    AssumptionViolatedException(String, boolean, Object, Matcher<?>)  
+                        
+                    AssumptionViolatedException(Object, Matcher<?>)  
+                        
+                    AssumptionViolatedException(String, Object, Matcher<?>)  
+                        
+                    AssumptionViolatedException(String)  
+                        
+                    AssumptionViolatedException(String, Throwable)  
+                        
+                class: JUnitSystem.java  
+                    exit(int)  
+                        
+                class: RealSystem.java  
+                    exit(int)  
+                        
+            org.junit.internal.matchers  
+                class: TypeSafeMatcher.java  
+                    
+            org.junit.internal.runners  
+                class: ClassRoadie.java  
+                    
+                class: FailedBefore.java  
+                    
+                class: InitializationError.java  
+                    
+                class: JUnit4ClassRunner.java  
+                    
+                class: MethodRoadie.java  
+                    
+                class: MethodValidator.java  
+                    
+                class: TestClass.java  
+                    
+                class: TestMethod.java  
+                    
+            org.junit.internal.runners.model  
+                class: MultipleFailureException.java  
+                    
+            org.junit.internal.runners.statements  
+                class: FailOnTimeout.java  
+                    FailOnTimeout(Statement, long)  
+                        
+            org.junit.matchers  
+                class: JUnitMatchers.java  
+                    hasItem(T)  
+                        
+                    hasItem(Matcher<? super T>)  
+                        
+                    hasItems(T...)  
+                        
+                    hasItems(Matcher<? super T>...)  
+                        
+                    everyItem(Matcher<T>)  
+                        
+                    containsString(String)  
+                        
+                    both(Matcher<? super T>)  
+                        
+                    either(Matcher<? super T>)  
+                        
+            org.junit.rules  
+                class: ExpectedException.java  
+                    handleAssertionErrors()  
+                        
+                    handleAssumptionViolatedExceptions()  
+                        
+                class: TestWatcher.java  
+                    skipped(AssumptionViolatedException, Description)  
+                        
+                class: TestWatchman.java  
+                    
+                class: Timeout.java  
+                    Timeout(int)  
+                        
+            org.junit.runners  
+                class: BlockJUnit4ClassRunner.java  
+                    validateInstanceMethods(List<Throwable>)  
+                        
+                    withPotentialTimeout(FrameworkMethod, Object, Statement)  
+                        
+            org.junit.runners.model  
+                class: FrameworkMethod.java  
+                    producesType(Type)  
+                        
+        Maven: org.apache.commons:commons-lang3:3.8.1  
+            org.apache.commons.lang3  
+                class: ArrayUtils.java  
+                    isEquals(Object, Object)  
+                        
+                    add(T[], int, T)  
+                        
+                    add(boolean[], int, boolean)  
+                        
+                    add(char[], int, char)  
+                        
+                    add(byte[], int, byte)  
+                        
+                    add(short[], int, short)  
+                        
+                    add(int[], int, int)  
+                        
+                    add(long[], int, long)  
+                        
+                    add(float[], int, float)  
+                        
+                    add(double[], int, double)  
+                        
+                class: CharEncoding.java  
+                    isSupported(String)  
+                        
+                    
+                class: CharUtils.java  
+                    toCharacterObject(char)  
+                        
+                class: JavaVersion.java  
+                    
+                class: ObjectUtils.java  
+                    equals(Object, Object)  
+                        
+                    hashCode(Object)  
+                        
+                    hashCodeMulti(Object...)  
+                        
+                    identityToString(StrBuilder, Object)  
+                        
+                    toString(Object)  
+                        
+                    toString(Object, String)  
+                        
+                class: StringEscapeUtils.java  
+                    escapeXml(String)  
+                        
+                    
+                    
+                class: StringUtils.java  
+                    removeAll(String, String)  
+                        
+                    removeFirst(String, String)  
+                        
+                    replacePattern(String, String, String)  
+                        
+                    removePattern(String, String)  
+                        
+                    replaceAll(String, String, String)  
+                        
+                    replaceFirst(String, String, String)  
+                        
+                    chomp(String, String)  
+                        
+                    getLevenshteinDistance(CharSequence, CharSequence)  
+                        
+                    getLevenshteinDistance(CharSequence, CharSequence, int)  
+                        
+                    getJaroWinklerDistance(CharSequence, CharSequence)  
+                        
+                    getFuzzyDistance(CharSequence, CharSequence, Locale)  
+                        
+                    toString(byte[], String)  
+                        
+                class: SystemUtils.java  
+                    
+                    
+                    
+                    
+            org.apache.commons.lang3.exception  
+                class: ExceptionUtils.java  
+                    getDefaultCauseMethodNames()  
+                        
+                    getCause(Throwable)  
+                        
+                    getCause(Throwable, String[])  
+                        
+            org.apache.commons.lang3.math  
+                class: NumberUtils.java  
+                    isNumber(String)  
+                        
+            org.apache.commons.lang3.text  
+                class: CompositeFormat.java  
+                    
+                class: ExtendedMessageFormat.java  
+                    
+                class: FormatFactory.java  
+                    
+                class: FormattableUtils.java  
+                    
+                class: StrBuilder.java  
+                    
+                class: StrLookup.java  
+                    
+                class: StrMatcher.java  
+                    
+                class: StrSubstitutor.java  
+                    
+                class: StrTokenizer.java  
+                    
+                class: WordUtils.java  
+                    
+            org.apache.commons.lang3.text.translate  
+                class: AggregateTranslator.java  
+                    
+                class: CharSequenceTranslator.java  
+                    
+                class: CodePointTranslator.java  
+                    
+                class: EntityArrays.java  
+                    
+                class: JavaUnicodeEscaper.java  
+                    
+                class: LookupTranslator.java  
+                    
+                class: NumericEntityEscaper.java  
+                    
+                class: NumericEntityUnescaper.java  
+                    
+                class: OctalUnescaper.java  
+                    
+                class: UnicodeEscaper.java  
+                    
+                class: UnicodeUnescaper.java  
+                    
+                class: UnicodeUnpairedSurrogateRemover.java  
+                    
+            org.apache.commons.lang3.time  
+                class: DateFormatUtils.java  
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                class: DatePrinter.java  
+                    format(long, StringBuffer)  
+                        
+                    format(Date, StringBuffer)  
+                        
+                    format(Calendar, StringBuffer)  
+                        
+                class: FastDateFormat.java  
+                    format(long, StringBuffer)  
+                        
+                    format(Date, StringBuffer)  
+                        
+                    format(Calendar, StringBuffer)  
+                        
+                    applyRules(Calendar, StringBuffer)  
+                        
+                class: FastDatePrinter.java  
+                    format(Object, StringBuffer, FieldPosition)  
+                        
+                    applyRules(Calendar, StringBuffer)  
+                        
+        Maven: org.easymock:easymock:3.2  
+            org.easymock  
+                class: EasyMock.java  
+                    createStrictMock(Class<T>, Method...)  
+                        
+                    createStrictMock(String, Class<T>, Method...)  
+                        
+                    createStrictMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createStrictMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+                    createMock(Class<T>, Method...)  
+                        
+                    createMock(String, Class<T>, Method...)  
+                        
+                    createMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+                    createNiceMock(Class<T>, Method...)  
+                        
+                    createNiceMock(String, Class<T>, Method...)  
+                        
+                    createNiceMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createNiceMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+                class: EasyMockSupport.java  
+                    createStrictMock(Class<T>, Method...)  
+                        
+                    createStrictMock(String, Class<T>, Method...)  
+                        
+                    createStrictMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createStrictMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+                    createMock(Class<T>, Method...)  
+                        
+                    createMock(String, Class<T>, Method...)  
+                        
+                    createMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+                    createNiceMock(Class<T>, Method...)  
+                        
+                    createNiceMock(String, Class<T>, Method...)  
+                        
+                    createNiceMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createNiceMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+                class: IMocksControl.java  
+                    createMock(Class<T>, Method...)  
+                        
+                    createMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createMock(String, Class<T>, Method...)  
+                        
+                    createMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+            org.easymock.internal  
+                class: MocksControl.java  
+                    createMock(String, Class<T>, Method...)  
+                        
+                    createMock(Class<T>, Method...)  
+                        
+                    createMock(Class<T>, ConstructorArgs, Method...)  
+                        
+                    createMock(String, Class<T>, ConstructorArgs, Method...)  
+                        
+                    
+        Maven: org.hamcrest:hamcrest-core:1.3  
+            org.hamcrest  
+                class: BaseMatcher.java  
+                    _dont_implement_Matcher___instead_extend_BaseMatcher_()  
+                        
+                class: Matcher.java  
+                    _dont_implement_Matcher___instead_extend_BaseMatcher_()  
+                        
+            org.hamcrest.core  
+                class: Is.java  
+                    is(Class<T>)  
+                        
+        Maven: org.hibernate:hibernate-core:5.3.6.Final  
+            org.hibernate  
+                class: BasicQueryContract.java  
+                    setFlushMode(FlushMode)  
+                        
+                    getReturnTypes()  
+                        
+                    
+                class: Cache.java  
+                    evictEntity(Class, Serializable)  
+                        
+                    evictEntity(String, Serializable)  
+                        
+                    evictEntityRegion(Class)  
+                        
+                    evictEntityRegion(String)  
+                        
+                    evictEntityRegions()  
+                        
+                    evictNaturalIdRegion(Class)  
+                        
+                    evictNaturalIdRegion(String)  
+                        
+                    evictNaturalIdRegions()  
+                        
+                    evictCollection(String, Serializable)  
+                        
+                    evictCollectionRegion(String)  
+                        
+                    evictCollectionRegions()  
+                        
+                class: Criteria.java  
+                    createAlias(String, String, int)  
+                        
+                    createAlias(String, String, int, Criterion)  
+                        
+                    createCriteria(String, int)  
+                        
+                    createCriteria(String, String, int)  
+                        
+                    createCriteria(String, String, int, Criterion)  
+                        
+                class: DuplicateMappingException.java  
+                    DuplicateMappingException(String, String)  
+                        
+                    DuplicateMappingException(String, String, String)  
+                        
+                class: FetchMode.java  
+                    
+                    
+                class: FlushMode.java  
+                    isManualFlushMode(FlushMode)  
+                        
+                class: InstantiationException.java  
+                    getPersistentClass()  
+                        
+                class: Interceptor.java  
+                    onPrepareStatement(String)  
+                        
+                class: LockMode.java  
+                    
+                    
+                class: MappingNotFoundException.java  
+                    
+                class: Metamodel.java  
+                    getEntityTypeByName(String)  
+                        
+                class: OptimisticLockException.java  
+                    
+                class: Query.java  
+                    getHibernateFirstResult()  
+                        
+                    setHibernateFirstResult(int)  
+                        
+                    getHibernateMaxResults()  
+                        
+                    setHibernateMaxResults(int)  
+                        
+                    setFlushMode(FlushMode)  
+                        
+                    getReturnTypes()  
+                        
+                    getNamedParameters()  
+                        
+                    setString(int, String)  
+                        
+                    setCharacter(int, char)  
+                        
+                    setBoolean(int, boolean)  
+                        
+                    setByte(int, byte)  
+                        
+                    setShort(int, short)  
+                        
+                    setInteger(int, int)  
+                        
+                    setLong(int, long)  
+                        
+                    setFloat(int, float)  
+                        
+                    setDouble(int, double)  
+                        
+                    setBinary(int, byte[])  
+                        
+                    setText(int, String)  
+                        
+                    setSerializable(int, Serializable)  
+                        
+                    setLocale(int, Locale)  
+                        
+                    setBigDecimal(int, BigDecimal)  
+                        
+                    setBigInteger(int, BigInteger)  
+                        
+                    setDate(int, Date)  
+                        
+                    setTime(int, Date)  
+                        
+                    setTimestamp(int, Date)  
+                        
+                    setCalendar(int, Calendar)  
+                        
+                    setCalendarDate(int, Calendar)  
+                        
+                    setString(String, String)  
+                        
+                    setCharacter(String, char)  
+                        
+                    setBoolean(String, boolean)  
+                        
+                    setByte(String, byte)  
+                        
+                    setShort(String, short)  
+                        
+                    setInteger(String, int)  
+                        
+                    setLong(String, long)  
+                        
+                    setFloat(String, float)  
+                        
+                    setDouble(String, double)  
+                        
+                    setBinary(String, byte[])  
+                        
+                    setText(String, String)  
+                        
+                    setSerializable(String, Serializable)  
+                        
+                    setLocale(String, Locale)  
+                        
+                    setBigDecimal(String, BigDecimal)  
+                        
+                    setBigInteger(String, BigInteger)  
+                        
+                    setDate(String, Date)  
+                        
+                    setTime(String, Date)  
+                        
+                    setTimestamp(String, Date)  
+                        
+                    setCalendar(String, Calendar)  
+                        
+                    setCalendarDate(String, Calendar)  
+                        
+                    setEntity(int, Object)  
+                        
+                    setEntity(String, Object)  
+                        
+                    determineProperBooleanType(int, Object, Type)  
+                        
+                    determineProperBooleanType(String, Object, Type)  
+                        
+                    setResultTransformer(ResultTransformer)  
+                        
+                    getReturnAliases()  
+                        
+                    setParameters(Object[], Type[])  
+                        
+                    
+                class: Session.java  
+                    setFlushMode(FlushMode)  
+                        
+                    createFilter(Object, String)  
+                        
+                class: SessionBuilder.java  
+                    autoClose(boolean)  
+                        
+                    connectionReleaseMode(ConnectionReleaseMode)  
+                        
+                    flushBeforeCompletion(boolean)  
+                        
+                class: SessionFactory.java  
+                    getClassMetadata(Class)  
+                        
+                    getClassMetadata(String)  
+                        
+                    getCollectionMetadata(String)  
+                        
+                    getAllClassMetadata()  
+                        
+                    getAllCollectionMetadata()  
+                        
+                class: SharedSessionBuilder.java  
+                    transactionContext()  
+                        
+                    connectionReleaseMode()  
+                        
+                    flushBeforeCompletion()  
+                        
+                class: SharedSessionContract.java  
+                    createCriteria(Class)  
+                        
+                    createCriteria(Class, String)  
+                        
+                    createCriteria(String)  
+                        
+                    createCriteria(String, String)  
+                        
+                class: SQLQuery.java  
+                    
+                class: StatelessSession.java  
+                    connection()  
+                        
+            org.hibernate.action.internal  
+                class: EntityIdentityInsertAction.java  
+                    getDelayedEntityKey()  
+                        
+            org.hibernate.annotations  
+                class: AccessType.java  
+                    
+                class: CascadeType.java  
+                    
+                    
+                class: Entity.java  
+                    mutable()  
+                        
+                    dynamicInsert()  
+                        
+                    dynamicUpdate()  
+                        
+                    selectBeforeUpdate()  
+                        
+                    polymorphism()  
+                        
+                    optimisticLock()  
+                        
+                    persister()  
+                        
+                    
+                class: FlushModeType.java  
+                    
+                class: ForeignKey.java  
+                    
+                class: Index.java  
+                    
+                class: IndexColumn.java  
+                    
+                class: Sort.java  
+                    
+                class: SortType.java  
+                    
+                class: Tuplizer.java  
+                    entityMode()  
+                        
+            org.hibernate.boot  
+                class: MetadataBuilder.java  
+                    applyAttributeConverter(AttributeConverterDefinition)  
+                        
+                class: MetadataSources.java  
+                    getMetadataBuilder(StandardServiceRegistry)  
+                        
+                    addClass(Class)  
+                        
+                    addDocument(Document)  
+                        
+                class: SessionFactoryBuilder.java  
+                    applyDefaultEntityMode(EntityMode)  
+                        
+                    applyQuerySubstitutions(Map)  
+                        
+                    applyStrictJpaQueryLanguageCompliance(boolean)  
+                        
+                    applyConnectionReleaseMode(ConnectionReleaseMode)  
+                        
+            org.hibernate.boot.archive.scan.spi  
+                class: ScanOptions.java  
+                    canDetectHibernateMappingFiles()  
+                        
+            org.hibernate.boot.archive.spi  
+                class: ArchiveDescriptorFactory.java  
+                    getURLFromPath(String)  
+                        
+            org.hibernate.boot.internal  
+                class: InFlightMetadataCollectorImpl.java  
+                    getTypeResolver()  
+                        
+                class: MetadataImpl.java  
+                    getTypeResolver()  
+                        
+            org.hibernate.boot.jaxb.internal.stax  
+                class: LocalSchema.java  
+                    
+            org.hibernate.boot.model  
+                class: TypeContributions.java  
+                    contributeType(BasicType, String...)  
+                        
+                    contributeType(UserType, String...)  
+                        
+                    contributeType(CompositeUserType, String...)  
+                        
+            org.hibernate.boot.registry  
+                class: BootstrapServiceRegistryBuilder.java  
+                    with(Integrator)  
+                        
+                    with(ClassLoader)  
+                        
+                    with(ClassLoaderService)  
+                        
+                    withStrategySelector(Class<T>, String, Class<? extends T>)  
+                        
+                    withStrategySelectors(StrategyRegistrationProvider)  
+                        
+                class: StandardServiceRegistryBuilder.java  
+                    getSettings()  
+                        
+            org.hibernate.boot.registry.classloading.internal  
+                class: ClassLoaderServiceImpl.java  
+                    fromConfigSettings(Map)  
+                        
+            org.hibernate.boot.spi  
+                class: AbstractDelegatingMetadata.java  
+                    getTypeResolver()  
+                        
+                class: AbstractDelegatingMetadataBuilderImplementor.java  
+                    getDelegate()  
+                        
+                class: AdditionalJaxbMappingProducer.java  
+                    
+                class: BootstrapContext.java  
+                    getReflectionManager()  
+                        
+                class: InFlightMetadataCollector.java  
+                    addAttributeConverter(AttributeConverterDefinition)  
+                        
+                    getClassmateContext()  
+                        
+                class: MetadataBuildingContext.java  
+                    getClassLoaderAccess()  
+                        
+                class: MetadataBuildingOptions.java  
+                    getReflectionManager()  
+                        
+                    getJandexView()  
+                        
+                    getScanOptions()  
+                        
+                    getScanEnvironment()  
+                        
+                    getScanner()  
+                        
+                    getArchiveDescriptorFactory()  
+                        
+                    getTempClassLoader()  
+                        
+                    getCacheRegionDefinitions()  
+                        
+                    getSqlFunctions()  
+                        
+                    getAuxiliaryDatabaseObjectList()  
+                        
+                    getAttributeConverters()  
+                        
+                class: MetadataImplementor.java  
+                    getTypeResolver()  
+                        
+                class: SessionFactoryBuilderImplementor.java  
+                    markAsJpaBootstrap()  
+                        
+                class: SessionFactoryOptions.java  
+                    getStatelessInterceptorImplementor()  
+                        
+                    isStrictJpaQueryLanguageCompliance()  
+                        
+                    getConnectionReleaseMode()  
+                        
+            org.hibernate.cache  
+                class: RegionFactory.java  
+                    
+            org.hibernate.cache.spi  
+                class: CacheImplementor.java  
+                    getSecondLevelCacheRegionNames()  
+                        
+                    getEntityRegionAccess(NavigableRole)  
+                        
+                    getNaturalIdCacheRegionAccessStrategy(NavigableRole)  
+                        
+                    getCollectionRegionAccess(NavigableRole)  
+                        
+                    getUpdateTimestampsCache()  
+                        
+                    getQueryCache()  
+                        
+                    getDefaultQueryCache()  
+                        
+                    getQueryCache(String)  
+                        
+                    unqualifyRegionName(String)  
+                        
+                    getRegionByLegacyName(String)  
+                        
+                    getNaturalIdAccessesInRegion(String)  
+                        
+                class: QueryCache.java  
+                    
+                class: UpdateTimestampsCache.java  
+                    
+            org.hibernate.cfg  
+                class: AttributeConverterDefinition.java  
+                    
+                class: AvailableSettings.java  
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                class: Configuration.java  
+                    configure(Document)  
+                        
+                    add(XmlDocument)  
+                        
+                    addXML(String)  
+                        
+                    addDocument(Document)  
+                        
+                    addResource(String, ClassLoader)  
+                        
+                    buildMappings()  
+                        
+                class: Environment.java  
+                    jvmHasTimestampBug()  
+                        
+                    useStreamsForBinary()  
+                        
+                    useReflectionOptimizer()  
+                        
+                    getBytecodeProvider()  
+                        
+                    useLegacyProxyClassnames()  
+                        
+                    isolationLevelToString(int)  
+                        
+                class: NamingStrategy.java  
+                    
+                class: RecoverableException.java  
+                    
+                class: Settings.java  
+                    
+            org.hibernate.cfg.annotations  
+                class: TableBinder.java  
+                    buildUniqueConstraints(UniqueConstraint[])  
+                        
+            org.hibernate.cfg.annotations.reflection  
+                class: JPAMetadataProvider.java  
+                    JPAMetadataProvider(MetadataBuildingOptions)  
+                        
+                class: XMLContext.java  
+                    XMLContext(ClassLoaderAccess)  
+                        
+            org.hibernate.collection.internal  
+                class: AbstractPersistentCollection.java  
+                    AbstractPersistentCollection(SessionImplementor)  
+                        
+                    identityRemove(Collection, Object, String, SessionImplementor)  
+                        
+                class: PersistentArrayHolder.java  
+                    PersistentArrayHolder(SessionImplementor, Object)  
+                        
+                    PersistentArrayHolder(SessionImplementor, CollectionPersister)  
+                        
+                class: PersistentBag.java  
+                    PersistentBag(SessionImplementor)  
+                        
+                    PersistentBag(SessionImplementor, Collection)  
+                        
+                class: PersistentIdentifierBag.java  
+                    PersistentIdentifierBag(SessionImplementor)  
+                        
+                    PersistentIdentifierBag(SessionImplementor, Collection)  
+                        
+                class: PersistentList.java  
+                    PersistentList(SessionImplementor)  
+                        
+                    PersistentList(SessionImplementor, List)  
+                        
+                class: PersistentMap.java  
+                    PersistentMap(SessionImplementor)  
+                        
+                    PersistentMap(SessionImplementor, Map)  
+                        
+                class: PersistentSet.java  
+                    PersistentSet(SessionImplementor)  
+                        
+                    PersistentSet(SessionImplementor, Set)  
+                        
+                class: PersistentSortedMap.java  
+                    PersistentSortedMap(SessionImplementor)  
+                        
+                    PersistentSortedMap(SessionImplementor, SortedMap)  
+                        
+                class: PersistentSortedSet.java  
+                    PersistentSortedSet(SessionImplementor)  
+                        
+                    PersistentSortedSet(SessionImplementor, SortedSet)  
+                        
+            org.hibernate.criterion  
+                class: CriteriaSpecification.java  
+                    
+                    
+                    
+                class: DetachedCriteria.java  
+                    createAlias(String, String, int)  
+                        
+                    createAlias(String, String, int, Criterion)  
+                        
+                    createCriteria(String, int)  
+                        
+                    createCriteria(String, String, int)  
+                        
+                    createCriteria(String, String, int, Criterion)  
+                        
+                class: Expression.java  
+                    sql(String, Object[], Type[])  
+                        
+                    sql(String, Object, Type)  
+                        
+                    sql(String)  
+                        
+                    
+                class: IlikeExpression.java  
+                    
+                class: ProjectionList.java  
+                    create()  
+                        
+            org.hibernate.dialect  
+                class: DerbyDialect.java  
+                    
+                class: Dialect.java  
+                    getNativeIdentifierGeneratorClass()  
+                        
+                    getCreateSequenceStrings(String)  
+                        
+                    supportsLimit()  
+                        
+                    supportsLimitOffset()  
+                        
+                    supportsVariableLimit()  
+                        
+                    bindLimitParametersInReverseOrder()  
+                        
+                    bindLimitParametersFirst()  
+                        
+                    useMaxForLimit()  
+                        
+                    forceLimitUsage()  
+                        
+                    getLimitString(String, int, int)  
+                        
+                    getLimitString(String, boolean)  
+                        
+                    convertToFirstRowValue(int)  
+                        
+                    appendLockHint(LockMode, String)  
+                        
+                    buildSQLExceptionConverter()  
+                        
+                    getKeywords()  
+                        
+                    useFollowOnLocking()  
+                        
+                    supportsUnique()  
+                        
+                    supportsUniqueConstraintInCreateAlterTable()  
+                        
+                    getAddUniqueConstraintString(String)  
+                        
+                    supportsNotNullUnique()  
+                        
+                class: MySQL57InnoDBDialect.java  
+                    
+                class: MySQL5InnoDBDialect.java  
+                    
+                class: MySQLInnoDBDialect.java  
+                    
+                class: MySQLMyISAMDialect.java  
+                    
+                class: Oracle9Dialect.java  
+                    
+                class: OracleDialect.java  
+                    
+                class: PostgreSQLDialect.java  
+                    
+            org.hibernate.ejb  
+                class: AvailableSettings.java  
+                    
+                class: HibernateEntityManager.java  
+                    
+                class: HibernateEntityManagerFactory.java  
+                    
+                class: HibernateQuery.java  
+                    
+            org.hibernate.engine.config.spi  
+                class: ConfigurationService.java  
+                    cast(Class<T>, Object)  
+                        
+            org.hibernate.engine.internal  
+                class: AbstractEntityEntry.java  
+                    AbstractEntityEntry(Status, Object[], Object, Serializable, Object, LockMode, boolean, ...)  
+                        
+                class: ImmutableEntityEntry.java  
+                    ImmutableEntityEntry(Status, Object[], Object, Serializable, Object, LockMode, boolean, ...)  
+                        
+                class: MutableEntityEntry.java  
+                    MutableEntityEntry(Status, Object[], Object, Serializable, Object, LockMode, boolean, ...)  
+                        
+            org.hibernate.engine.jdbc  
+                class: SerializableNClobProxy.java  
+                    isNClob(Clob)  
+                        
+                class: WrappedNClob.java  
+                    getWrappedClob()  
+                        
+            org.hibernate.engine.jdbc.spi  
+                class: JdbcCoordinator.java  
+                    getConnectionReleaseMode()  
+                        
+                    getConnectionHandlingMode()  
+                        
+                    getResourceRegistry()  
+                        
+            org.hibernate.engine.query.spi  
+                class: NativeQueryInterpreter.java  
+                    createCustomLoader(CustomQuery, SessionFactoryImplementor)  
+                        
+            org.hibernate.engine.spi  
+                class: CacheImplementor.java  
+                    getSecondLevelCacheRegionNames()  
+                        
+                    getEntityRegionAccess(NavigableRole)  
+                        
+                    getNaturalIdCacheRegionAccessStrategy(NavigableRole)  
+                        
+                    getCollectionRegionAccess(NavigableRole)  
+                        
+                    getUpdateTimestampsCache()  
+                        
+                    getQueryCache()  
+                        
+                    getDefaultQueryCache()  
+                        
+                    getQueryCache(String)  
+                        
+                    unqualifyRegionName(String)  
+                        
+                    getRegionByLegacyName(String)  
+                        
+                    getNaturalIdAccessesInRegion(String)  
+                        
+                    
+                class: Mapping.java  
+                    getIdentifierGeneratorFactory()  
+                        
+                class: NamedQueryDefinition.java  
+                    NamedQueryDefinition(String, String, boolean, String, Integer, Integer, FlushMode, ...)  
+                        
+                    NamedQueryDefinition(String, String, boolean, String, Integer, Integer, Integer, ...)  
+                        
+                class: NamedSQLQueryDefinition.java  
+                    NamedSQLQueryDefinition(String, String, NativeSQLQueryReturn[], List<String>, boolean, String, Integer, ...)  
+                        
+                    NamedSQLQueryDefinition(String, String, String, List<String>, boolean, String, Integer, ...)  
+                        
+                class: PersistenceContext.java  
+                    getEntityEntries()  
+                        
+                class: SessionBuilderImplementor.java  
+                    owner(SessionOwner)  
+                        
+                class: SessionDelegatorBaseImpl.java  
+                    SessionDelegatorBaseImpl(SessionImplementor, Session)  
+                        
+                class: SessionFactoryDelegatingImpl.java  
+                    getTypeResolver()  
+                        
+                class: SessionFactoryImplementor.java  
+                    getInterceptor()  
+                        
+                    getQueryPlanCache()  
+                        
+                    getNamedQueryRepository()  
+                        
+                    getTypeResolver()  
+                        
+                    iterateEntityNameResolvers()  
+                        
+                    getReturnTypes(String)  
+                        
+                    getReturnAliases(String)  
+                        
+                    getStatisticsImplementor()  
+                        
+                    getNamedQuery(String)  
+                        
+                    registerNamedQueryDefinition(String, NamedQueryDefinition)  
+                        
+                    getNamedSQLQuery(String)  
+                        
+                    registerNamedSQLQueryDefinition(String, NamedSQLQueryDefinition)  
+                        
+                    getResultSetMapping(String)  
+                        
+                    getDialect()  
+                        
+                    getSQLExceptionConverter()  
+                        
+                    getSQLExceptionHelper()  
+                        
+                    getSettings()  
+                        
+                    getEntityPersister(String)  
+                        
+                    getEntityPersisters()  
+                        
+                    getCollectionPersister(String)  
+                        
+                    getCollectionPersisters()  
+                        
+                    getCollectionRolesByEntityParticipant(String)  
+                        
+                    locateEntityPersister(Class)  
+                        
+                    locateEntityPersister(String)  
+                        
+                    getImplementors(String)  
+                        
+                    getImportedClassName(String)  
+                        
+                class: SessionImplementor.java  
+                    isFlushBeforeCompletionEnabled()  
+                        
+                    createQuery(String, Class<T>, Selection, QueryOptions)  
+                        
+                    merge(String, Object, Map)  
+                        
+                    persist(String, Object, Map)  
+                        
+                    persistOnFlush(String, Object, Map)  
+                        
+                    refresh(String, Object, Map)  
+                        
+                    delete(String, Object, boolean, Set)  
+                        
+                    removeOrphanBeforeUpdates(String, Object)  
+                        
+                class: SessionOwner.java  
+                    
+                class: SharedSessionContractImplementor.java  
+                    getTimestamp()  
+                        
+                    setFlushMode(FlushMode)  
+                        
+                class: TypedValue.java  
+                    TypedValue(Type, Object, EntityMode)  
+                        
+            org.hibernate.engine.transaction.spi  
+                class: TransactionImplementor.java  
+                    invalidate()  
+                        
+            org.hibernate.event.service.internal  
+                class: EventListenerRegistryImpl.java  
+                    EventListenerRegistryImpl(SessionFactoryImplementor, SessionFactoryOptions, ServiceRegistryImplementor)  
+                        
+            org.hibernate.event.spi  
+                class: AbstractPreDatabaseOperationEvent.java  
+                    getSource()  
+                        
+                class: PostActionEventListener.java  
+                    requiresPostCommitHanding(EntityPersister)  
+                        
+            org.hibernate.exception.internal  
+                class: SQLStateConverter.java  
+                    
+            org.hibernate.hql.internal.ast.tree  
+                class: ConstructorNode.java  
+                    getDataType()  
+                        
+                class: ParameterContainer.java  
+                    
+            org.hibernate.hql.internal.ast.util  
+                class: ASTUtil.java  
+                    ASTUtil()  
+                        
+                    create(ASTFactory, int, String)  
+                        
+                    getConstantName(Class, int)  
+                        
+                class: ColumnHelper.java  
+                    ColumnHelper()  
+                        
+            org.hibernate.hql.spi.id.inline  
+                class: IdsClauseBuilder.java  
+                    IdsClauseBuilder(Dialect, Type, TypeResolver, String[], List<Object[]>)  
+                        
+                    getTypeResolver()  
+                        
+            org.hibernate.id  
+                class: IdentifierGeneratorHelper.java  
+                    createNumber(long, Class)  
+                        
+                class: MultipleHiLoPerTableGenerator.java  
+                    
+                class: PersistentIdentifierGenerator.java  
+                    sqlCreateStrings(Dialect)  
+                        
+                    sqlDropStrings(Dialect)  
+                        
+                class: SequenceGenerator.java  
+                    
+                    
+                class: SequenceHiLoGenerator.java  
+                    
+                class: SequenceIdentityGenerator.java  
+                    
+            org.hibernate.id.enhanced  
+                class: OptimizerFactory.java  
+                    buildOptimizer(String, Class, int)  
+                        
+                    
+                    
+                    
+                    
+                    
+            org.hibernate.id.factory  
+                class: IdentifierGeneratorFactory.java  
+                    setDialect(Dialect)  
+                        
+            org.hibernate.integrator.spi  
+                class: ServiceContributingIntegrator.java  
+                    
+            org.hibernate.internal  
+                class: AbstractSharedSessionContract.java  
+                    errorIfClosed()  
+                        
+                class: CoreMessageLogger.java  
+                    unsuccessfulCreate(String)  
+                        
+                    deprecatedManyToManyOuterJoin()  
+                        
+                    deprecatedManyToManyFetch()  
+                        
+                class: SessionCreationOptions.java  
+                    getSessionOwner()  
+                        
+                class: SessionFactoryImpl.java  
+                    getTypeResolver()  
+                        
+            org.hibernate.internal.util  
+                class: ConfigHelper.java  
+                    
+                class: ReflectHelper.java  
+                    classForName(String)  
+                        
+            org.hibernate.internal.util.collections  
+                class: ArrayHelper.java  
+                    isEquals(Object[], Object[])  
+                        
+                    isEquals(char[], char[])  
+                        
+                    isEquals(byte[], byte[])  
+                        
+                class: CollectionHelper.java  
+                    
+                    
+                    
+            org.hibernate.internal.util.jndi  
+                class: JndiHelper.java  
+                    
+            org.hibernate.internal.util.xml  
+                class: DTDEntityResolver.java  
+                    
+                class: UnsupportedOrmXsdVersionException.java  
+                    
+                class: XMLHelper.java  
+                    
+            org.hibernate.jpa  
+                class: AvailableSettings.java  
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                class: HibernateEntityManager.java  
+                    
+                class: HibernateEntityManagerFactory.java  
+                    getSessionFactory()  
+                        
+                    getEntityManagerFactoryName()  
+                        
+                    getEntityTypeByName(String)  
+                        
+                    
+                class: QueryHints.java  
+                    
+            org.hibernate.jpa.event.spi  
+                class: CallbackRegistry.java  
+                    hasPostCreateCallbacks(Class)  
+                        
+                    hasPostUpdateCallbacks(Class)  
+                        
+                    hasPostRemoveCallbacks(Class)  
+                        
+                    hasRegisteredCallbacks(Class, Class)  
+                        
+            org.hibernate.jpa.event.spi.jpa  
+                class: ExtendedBeanManager.java  
+                    
+                    
+            org.hibernate.jpa.spi  
+                class: HibernateEntityManagerFactoryAware.java  
+                    
+                class: HibernateEntityManagerImplementor.java  
+                    getLockRequest(LockModeType, Map<String, Object>)  
+                        
+                    createQuery(String, Class<T>, Selection, QueryOptions)  
+                        
+                    
+            org.hibernate.loader.entity  
+                class: UniqueEntityLoader.java  
+                    load(Serializable, Object, SharedSessionContractImplementor)  
+                        
+            org.hibernate.loader.entity.plan  
+                class: AbstractLoadPlanBasedEntityLoader.java  
+                    extractEntityResult(List)  
+                        
+            org.hibernate.loader.plan.exec.process.spi  
+                class: ResultSetProcessor.java  
+                    toOnDemandForm()  
+                        
+            org.hibernate.lob  
+                class: ReaderInputStream.java  
+                    
+            org.hibernate.mapping  
+                class: Any.java  
+                    Any(MetadataImplementor, Table)  
+                        
+                class: Array.java  
+                    Array(MetadataImplementor, PersistentClass)  
+                        
+                class: Bag.java  
+                    Bag(MetadataImplementor, PersistentClass)  
+                        
+                class: Collection.java  
+                    Collection(MetadataImplementor, PersistentClass)  
+                        
+                    setOwner(PersistentClass)  
+                        
+                class: Component.java  
+                    Component(MetadataImplementor, PersistentClass)  
+                        
+                    Component(MetadataImplementor, Component)  
+                        
+                    Component(MetadataImplementor, Join)  
+                        
+                    Component(MetadataImplementor, Collection)  
+                        
+                    Component(MetadataImplementor, Table, PersistentClass)  
+                        
+                class: DependantValue.java  
+                    DependantValue(MetadataImplementor, Table, KeyValue)  
+                        
+                class: IdentifierBag.java  
+                    IdentifierBag(MetadataImplementor, PersistentClass)  
+                        
+                class: IdentifierCollection.java  
+                    IdentifierCollection(MetadataImplementor, PersistentClass)  
+                        
+                class: IndexedCollection.java  
+                    IndexedCollection(MetadataImplementor, PersistentClass)  
+                        
+                class: List.java  
+                    List(MetadataImplementor, PersistentClass)  
+                        
+                class: ManyToOne.java  
+                    ManyToOne(MetadataImplementor, Table)  
+                        
+                class: Map.java  
+                    Map(MetadataImplementor, PersistentClass)  
+                        
+                class: OneToMany.java  
+                    OneToMany(MetadataImplementor, PersistentClass)  
+                        
+                class: OneToOne.java  
+                    OneToOne(MetadataImplementor, Table, PersistentClass)  
+                        
+                class: PersistentClass.java  
+                    isCachingExplicitlyRequested()  
+                        
+                    setCachingExplicitlyRequested(boolean)  
+                        
+                    getOptimisticLockMode()  
+                        
+                    setOptimisticLockMode(int)  
+                        
+                class: PrimitiveArray.java  
+                    PrimitiveArray(MetadataImplementor, PersistentClass)  
+                        
+                class: PropertyGeneration.java  
+                    
+                class: RelationalModel.java  
+                    
+                class: Set.java  
+                    Set(MetadataImplementor, PersistentClass)  
+                        
+                class: SimpleValue.java  
+                    SimpleValue(MetadataImplementor)  
+                        
+                    SimpleValue(MetadataImplementor, Table)  
+                        
+                class: Table.java  
+                    getQualifiedName(Dialect, String, String)  
+                        
+                    qualify(String, String, String)  
+                        
+                class: ToOne.java  
+                    ToOne(MetadataImplementor, Table)  
+                        
+            org.hibernate.metadata  
+                class: ClassMetadata.java  
+                    getPropertyValuesToInsert(Object, Map, SessionImplementor)  
+                        
+                    instantiate(Serializable, SessionImplementor)  
+                        
+                    getIdentifier(Object)  
+                        
+                    getIdentifier(Object, SessionImplementor)  
+                        
+                    setIdentifier(Object, Serializable, SessionImplementor)  
+                        
+            org.hibernate.persister.collection  
+                class: AbstractCollectionPersister.java  
+                    doProcessQueuedOps(PersistentCollection, Serializable, int, SharedSessionContractImplementor)  
+                        
+            org.hibernate.persister.entity  
+                class: AbstractEntityPersister.java  
+                    getLoaders()  
+                        
+                    getPropertyInsertGenerationInclusions()  
+                        
+                    getPropertyUpdateGenerationInclusions()  
+                        
+                class: AbstractPropertyMapping.java  
+                    addPropertyPath(String, Type, String[], String[], String[], String[])  
+                        
+                class: EntityPersister.java  
+                    getPropertyInsertGenerationInclusions()  
+                        
+                    getPropertyUpdateGenerationInclusions()  
+                        
+                    hasCache()  
+                        
+                    getIdentifier(Object)  
+                        
+            org.hibernate.procedure  
+                class: ParameterRegistration.java  
+                    getType()  
+                        
+            org.hibernate.property.access.spi  
+                class: EnhancedGetterMethodImpl.java  
+                    
+            org.hibernate.proxy  
+                class: AbstractLazyInitializer.java  
+                    AbstractLazyInitializer()  
+                        
+                class: AbstractSerializableProxy.java  
+                    AbstractSerializableProxy()  
+                        
+                    AbstractSerializableProxy(String, Serializable, Boolean)  
+                        
+                    setReadOnlyBeforeAttachedToSession(AbstractLazyInitializer)  
+                        
+            org.hibernate.proxy.pojo.bytebuddy  
+                class: SerializableProxy.java  
+                    SerializableProxy(String, Class, Class[], Serializable, Boolean, Method, Method, ...)  
+                        
+            org.hibernate.proxy.class: pojo.javassist  
+                class: SerializableProxy.java  
+                    SerializableProxy(String, Class, Class[], Serializable, Boolean, Method, Method, ...)  
+                        
+            org.hibernate.query  
+                class: Query.java  
+                    setFlushMode(FlushMode)  
+                        
+                    setString(int, String)  
+                        
+                    setCharacter(int, char)  
+                        
+                    setBoolean(int, boolean)  
+                        
+                    setByte(int, byte)  
+                        
+                    setShort(int, short)  
+                        
+                    setInteger(int, int)  
+                        
+                    setLong(int, long)  
+                        
+                    setFloat(int, float)  
+                        
+                    setDouble(int, double)  
+                        
+                    setBinary(int, byte[])  
+                        
+                    setText(int, String)  
+                        
+                    setSerializable(int, Serializable)  
+                        
+                    setLocale(int, Locale)  
+                        
+                    setBigDecimal(int, BigDecimal)  
+                        
+                    setBigInteger(int, BigInteger)  
+                        
+                    setDate(int, Date)  
+                        
+                    setTime(int, Date)  
+                        
+                    setTimestamp(int, Date)  
+                        
+                    setCalendar(int, Calendar)  
+                        
+                    setCalendarDate(int, Calendar)  
+                        
+                    setString(String, String)  
+                        
+                    setCharacter(String, char)  
+                        
+                    setBoolean(String, boolean)  
+                        
+                    setByte(String, byte)  
+                        
+                    setShort(String, short)  
+                        
+                    setInteger(String, int)  
+                        
+                    setLong(String, long)  
+                        
+                    setFloat(String, float)  
+                        
+                    setDouble(String, double)  
+                        
+                    setBinary(String, byte[])  
+                        
+                    setText(String, String)  
+                        
+                    setSerializable(String, Serializable)  
+                        
+                    setLocale(String, Locale)  
+                        
+                    setBigDecimal(String, BigDecimal)  
+                        
+                    setBigInteger(String, BigInteger)  
+                        
+                    setDate(String, Date)  
+                        
+                    setTime(String, Date)  
+                        
+                    setTimestamp(String, Date)  
+                        
+                    setCalendar(String, Calendar)  
+                        
+                    setCalendarDate(String, Calendar)  
+                        
+                    setEntity(int, Object)  
+                        
+                    setEntity(String, Object)  
+                        
+                    setResultTransformer(ResultTransformer)  
+                        
+                    setParameters(Object[], Type[])  
+                        
+                class: QueryProducer.java  
+                    createSQLQuery(String)  
+                        
+                    getNamedSQLQuery(String)  
+                        
+            org.hibernate.query.criteria.internal.expression  
+                class: SizeOfPluralAttributeExpression.java  
+                    getCollectionPath()  
+                        
+            org.hibernate.query.internal  
+                class: ParameterMetadataImpl.java  
+                    getOrdinalParameterExpectedType(int)  
+                        
+                    getOrdinalParameterSourceLocation(int)  
+                        
+                    getNamedParameterExpectedType(String)  
+                        
+                    getNamedParameterSourceLocations(String)  
+                        
+                class: QueryParameterBindingsImpl.java  
+                    collectBindTypes()  
+                        
+                    collectBindValues()  
+                        
+                    collectPositionalBindTypes()  
+                        
+                    collectPositionalBindValues()  
+                        
+                    collectNamedParameterBindings()  
+                        
+                    getQueryParameterListBinding(QueryParameter<T>)  
+                        
+                    locateQueryParameterListBinding(QueryParameter)  
+                        
+                    transformQueryParameterBindingToQueryParameterListBinding(QueryParameter<T>)  
+                        
+                    getAndRemoveBinding(QueryParameter<T>)  
+                        
+                    getQueryParameterListBinding(String)  
+                        
+                    resolveQueryParameter(String)  
+                        
+                    getQueryParameterListBinding(int)  
+                        
+                    resolveQueryParameter(int)  
+                        
+                    expandListValuedParameters(String, SharedSessionContractImplementor)  
+                        
+            org.hibernate.resource.jdbc.spi  
+                class: JdbcSessionContext.java  
+                    getConnectionReleaseMode()  
+                        
+                    getConnectionAcquisitionMode()  
+                        
+                class: LogicalConnectionImplementor.java  
+                    makeShareableCopy()  
+                        
+            org.hibernate.resource.transaction.backend.jta.internal.synchronization  
+                class: AfterCompletionAction.java  
+                    
+                class: ManagedFlushChecker.java  
+                    
+            org.hibernate.resource.transaction.spi  
+                class: DdlTransactionIsolator.java  
+                    prepare()  
+                        
+                class: TransactionCoordinatorBuilder.java  
+                    getDefaultConnectionAcquisitionMode()  
+                        
+                    getDefaultConnectionReleaseMode()  
+                        
+            org.hibernate.service.spi  
+                class: SessionFactoryServiceInitiator.java  
+                    initiateService(SessionFactoryImplementor, SessionFactoryOptions, ServiceRegistryImplementor)  
+                        
+            org.hibernate.sql  
+                class: JoinFragment.java  
+                    
+                    
+                    
+                    
+                class: Select.java  
+                    getLockMode()  
+                        
+                    setLockMode(LockMode)  
+                        
+                class: Template.java  
+                    renderWhereStringTemplate(String, String, Dialect)  
+                        
+                    renderOrderByStringTemplate(String, Dialect, SQLFunctionRegistry)  
+                        
+            org.hibernate.stat  
+                class: NaturalIdCacheStatistics.java  
+                    
+                class: SecondLevelCacheStatistics.java  
+                    
+                class: Statistics.java  
+                    getSecondLevelCacheStatistics(String)  
+                        
+                    getNaturalIdCacheStatistics(String)  
+                        
+            org.hibernate.stat.internal  
+                class: DeprecatedNaturalIdCacheStatisticsImpl.java  
+                    
+            org.hibernate.tool.hbm2ddl  
+                class: ColumnMetadata.java  
+                    
+                class: ConnectionHelper.java  
+                    
+                class: DatabaseExporter.java  
+                    
+                class: Exporter.java  
+                    
+                class: FileExporter.java  
+                    
+                class: ForeignKeyMetadata.java  
+                    
+                class: ImportScriptException.java  
+                    
+                class: IndexMetadata.java  
+                    
+                class: ManagedProviderConnectionHelper.java  
+                    
+                class: SchemaExportTask.java  
+                    setNamingStrategy(String)  
+                        
+                class: SchemaUpdateCommand.java  
+                    
+                class: ScriptExporter.java  
+                    
+                class: SuppliedConnectionHelper.java  
+                    
+                class: SuppliedConnectionProviderConnectionHelper.java  
+                    
+                class: TableMetadata.java  
+                    
+            org.hibernate.tool.class: instrument.javassist  
+                class: InstrumentTask.java  
+                    
+            org.hibernate.tuple  
+                class: NonIdentifierAttribute.java  
+                    isDirtyCheckable(boolean)  
+                        
+                class: Property.java  
+                    getNode()  
+                        
+                    
+                class: PropertyFactory.java  
+                    buildStandardProperty(Property, boolean)  
+                        
+                class: StandardProperty.java  
+                    
+            org.hibernate.tuple.component  
+                class: ComponentMetamodel.java  
+                    ComponentMetamodel(Component, MetadataBuildingOptions)  
+                        
+                class: ComponentTuplizerFactory.java  
+                    ComponentTuplizerFactory(MetadataBuildingOptions)  
+                        
+            org.hibernate.tuple.entity  
+                class: EntityTuplizer.java  
+                    instantiate(Serializable)  
+                        
+                    getIdentifier(Object)  
+                        
+                    setIdentifier(Object, Serializable)  
+                        
+                    resetIdentifier(Object, Serializable, Object)  
+                        
+            org.hibernate.type  
+                class: BinaryType.java  
+                    seed(SharedSessionContractImplementor)  
+                        
+                    next(byte[], SharedSessionContractImplementor)  
+                        
+                    getComparator()  
+                        
+                class: EntityType.java  
+                    EntityType(TypeScope, String, String, boolean, boolean)  
+                        
+                class: ManyToOneType.java  
+                    ManyToOneType(TypeScope, String, String, boolean, boolean, boolean, boolean, ...)  
+                        
+                    ManyToOneType(TypeScope, String, boolean, String, boolean, boolean, boolean, ...)  
+                        
+                class: OneToOneType.java  
+                    OneToOneType(TypeScope, String, ForeignKeyDirection, String, boolean, boolean, String, ...)  
+                        
+                class: SpecialOneToOneType.java  
+                    SpecialOneToOneType(TypeScope, String, ForeignKeyDirection, String, boolean, boolean, String, ...)  
+                        
+                class: TypeFactory.java  
+                    customComponent(Class<CompositeUserType>, Properties, TypeScope)  
+                        
+                    custom(Class<UserType>, Properties, TypeScope)  
+                        
+                    manyToOne(String, String, boolean, boolean, boolean, boolean)  
+                        
+                    manyToOne(String, boolean, String, boolean, boolean, boolean, boolean)  
+                        
+                    
+                    
+                class: TypeHelper.java  
+                    findDirty(NonIdentifierAttribute[], Object[], Object[], boolean[][], boolean, SharedSessionContractImplementor)  
+                        
+                    findModified(NonIdentifierAttribute[], Object[], Object[], boolean[][], boolean[], boolean, SharedSessionContractImplementor)  
+                        
+                    
+                class: TypeResolver.java  
+                    
+            org.hibernate.type.descriptor  
+                class: WrapperOptionsContext.java  
+                    getWrapperOptions()  
+                        
+                    
+            org.hibernate.type.class: descriptor.java  
+                class: AbstractTypeDescriptor.java  
+                    getJavaTypeClass()  
+                        
+                class: JavaTypeDescriptor.java  
+                    getJavaTypeClass()  
+                        
+                class: JavaTypeDescriptorRegistry.java  
+                    addDescriptor(JavaTypeDescriptor)  
+                        
+                    getDescriptor(Class<J>)  
+                        
+                    
+                    
+            org.hibernate.type.descriptor.sql  
+                class: SqlTypeDescriptorRegistry.java  
+                    addDescriptor(SqlTypeDescriptor)  
+                        
+                    getDescriptor(int)  
+                        
+                    
+                    
+            org.hibernate.type.spi  
+                class: TypeConfiguration.java  
+                    getTypeResolver()  
+                        
+            org.hibernate.usertype  
+                class: EnhancedUserType.java  
+                    toXMLString(Object)  
+                        
+                    fromXMLString(String)  
+                        
+        Maven: org.picocontainer:picocontainer:2.14.3  
+            org.picocontainer  
+                class: Parameter.java  
+                    resolveInstance(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
+                        
+                    isResolvable(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
+                        
+            org.picocontainer.containers  
+                class: CommandLineArgumentsPicoContainer.java  
+                    
+            org.picocontainer.injectors  
+                class: ProviderAdapter.java  
+                    getComponentInstance(PicoContainer)  
+                        
+            org.picocontainer.parameters  
+                class: AbstractParameter.java  
+                    resolveInstance(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
+                        
+                    isResolvable(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
+                        
+        Maven: org.powermock:powermock-reflect:1.6.2  
+            org.powermock.reflect  
+                class: Whitebox.java  
+                    getInternalState(Object, String, Class<?>, Class<T>)  
+                        
+        Maven: org.slf4j:log4j-over-slf4j:1.7.12  
+            org.apache.log4j  
+                class: MDC.java  
+                    getContext()  
+                        
