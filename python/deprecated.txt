@@ -1,27 +1,27 @@
         Maven: com.fasterxml:classmate:1.3.0  
             com.fasterxml.classmate.types  
-                class: ResolvedObjectType.java  
+                ResolvedObjectType.java  
                     ResolvedObjectType(Class<?>, TypeBindings, ResolvedObjectType, List<ResolvedType>)  
                          
                     ResolvedObjectType(Class<?>, TypeBindings, ResolvedObjectType, ResolvedType[])  
                          
         Maven: com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8  
             com.microsoft.sqlserver.jdbc  
-                class: SQLServerBlob.java  
+                SQLServerBlob.java  
                     SQLServerBlob(SQLServerConnection, byte[])  
                         
-                class: SQLServerCallableStatement.java  
+                SQLServerCallableStatement.java  
                     getBigDecimal(int, int)  
                         
                     getBigDecimal(String, int)  
                         
-                class: SQLServerClob.java  
+                SQLServerClob.java  
                     SQLServerClob(SQLServerConnection, String)  
                         
-                class: SQLServerPreparedStatement.java  
+                SQLServerPreparedStatement.java  
                     setUnicodeStream(int, InputStream, int)  
                         
-                class: SQLServerResultSet.java  
+                SQLServerResultSet.java  
                     getBigDecimal(int, int)  
                         
                     getBigDecimal(String, int)  
@@ -32,43 +32,43 @@
                         
         Maven: io.springfox:springfox-core:2.4.0  
             springfox.documentation.builders  
-                class: ApiInfoBuilder.java  
+                ApiInfoBuilder.java  
                     contact(String)  
                         
             springfox.documentation.service  
-                class: ApiInfo.java  
+                ApiInfo.java  
                     ApiInfo(String, String, String, String, String, String, String)  
                         
         Maven: io.springfox:springfox-spi:2.4.0  
             springfox.documentation.spi.service  
-                class: ResourceGroupingStrategy.java  
+                ResourceGroupingStrategy.java  
                     getResourceDescription(RequestMappingInfo, HandlerMethod)  
                         
                     getResourcePosition(RequestMappingInfo, HandlerMethod)  
                         
                     
             springfox.documentation.spi.service.contexts  
-                class: DocumentationContext.java  
+                DocumentationContext.java  
                     getResourceGroupingStrategy()  
                         
-                class: DocumentationContextBuilder.java  
+                DocumentationContextBuilder.java  
                     withResourceGroupingStrategy(ResourceGroupingStrategy)  
                         
         Maven: io.springfox:springfox-swagger-common:2.4.0  
             springfox.documentation.swagger.web  
-                class: ClassOrApiAnnotationResourceGrouping.java  
+                ClassOrApiAnnotationResourceGrouping.java  
                     
         Maven: io.swagger:swagger-annotations:1.5.6  
             io.swagger.annotations  
-                class: Api.java  
+                Api.java  
                     description()  
                     basePath()
                     position()
-                class: ApiOperation.java
+                ApiOperation.java
                     position()  
         Maven: io.swagger:swagger-models:1.5.6
             io.swagger.models  
-                class: SecurityRequirement.java  
+                SecurityRequirement.java  
                     SecurityRequirement(String)  
                         
                     getName()  
@@ -79,7 +79,7 @@
                         
                     setScopes(List<String>)  
                         
-                class: Swagger.java  
+                Swagger.java  
                     getSecurityRequirement()  
                         
                     setSecurityRequirement(List<SecurityRequirement>)  
@@ -88,10 +88,10 @@
                         
         Maven: junit:junit:4.12  
             junit.framework  
-                class: Assert.java  
+                Assert.java  
                     
             org.junit  
-                class: Assert.java  
+                Assert.java  
                     assertEquals(double, double)  
                         
                     assertEquals(String, double, double)  
@@ -101,11 +101,11 @@
                     assertEquals(Object[], Object[])  
                         
             org.junit.experimental.max  
-                class: MaxCore.java  
+                MaxCore.java  
                     forFolder(String)  
                         
             org.junit.internal  
-                class: AssumptionViolatedException.java  
+                AssumptionViolatedException.java  
                     AssumptionViolatedException(String, boolean, Object, Matcher<?>)  
                         
                     AssumptionViolatedException(Object, Matcher<?>)  
@@ -116,41 +116,41 @@
                         
                     AssumptionViolatedException(String, Throwable)  
                         
-                class: JUnitSystem.java  
+                JUnitSystem.java  
                     exit(int)  
                         
-                class: RealSystem.java  
+                RealSystem.java  
                     exit(int)  
                         
             org.junit.internal.matchers  
-                class: TypeSafeMatcher.java  
+                TypeSafeMatcher.java  
                     
             org.junit.internal.runners  
-                class: ClassRoadie.java  
+                ClassRoadie.java  
                     
-                class: FailedBefore.java  
+                FailedBefore.java  
                     
-                class: InitializationError.java  
+                InitializationError.java  
                     
-                class: JUnit4ClassRunner.java  
+                JUnit4ClassRunner.java  
                     
-                class: MethodRoadie.java  
+                MethodRoadie.java  
                     
-                class: MethodValidator.java  
+                MethodValidator.java  
                     
-                class: TestClass.java  
+                TestClass.java  
                     
-                class: TestMethod.java  
+                TestMethod.java  
                     
             org.junit.internal.runners.model  
-                class: MultipleFailureException.java  
+                MultipleFailureException.java  
                     
             org.junit.internal.runners.statements  
-                class: FailOnTimeout.java  
+                FailOnTimeout.java  
                     FailOnTimeout(Statement, long)  
                         
             org.junit.matchers  
-                class: JUnitMatchers.java  
+                JUnitMatchers.java  
                     hasItem(T)  
                         
                     hasItem(Matcher<? super T>)  
@@ -168,32 +168,32 @@
                     either(Matcher<? super T>)  
                         
             org.junit.rules  
-                class: ExpectedException.java  
+                ExpectedException.java  
                     handleAssertionErrors()  
                         
                     handleAssumptionViolatedExceptions()  
                         
-                class: TestWatcher.java  
+                TestWatcher.java  
                     skipped(AssumptionViolatedException, Description)  
                         
-                class: TestWatchman.java  
+                TestWatchman.java  
                     
-                class: Timeout.java  
+                Timeout.java  
                     Timeout(int)  
                         
             org.junit.runners  
-                class: BlockJUnit4ClassRunner.java  
+                BlockJUnit4ClassRunner.java  
                     validateInstanceMethods(List<Throwable>)  
                         
                     withPotentialTimeout(FrameworkMethod, Object, Statement)  
                         
             org.junit.runners.model  
-                class: FrameworkMethod.java  
+                FrameworkMethod.java  
                     producesType(Type)  
                         
         Maven: org.apache.commons:commons-lang3:3.8.1  
             org.apache.commons.lang3  
-                class: ArrayUtils.java  
+                ArrayUtils.java  
                     isEquals(Object, Object)  
                         
                     add(T[], int, T)  
@@ -214,16 +214,16 @@
                         
                     add(double[], int, double)  
                         
-                class: CharEncoding.java  
+                CharEncoding.java  
                     isSupported(String)  
                         
                     
-                class: CharUtils.java  
+                CharUtils.java  
                     toCharacterObject(char)  
                         
-                class: JavaVersion.java  
+                JavaVersion.java  
                     
-                class: ObjectUtils.java  
+                ObjectUtils.java  
                     equals(Object, Object)  
                         
                     hashCode(Object)  
@@ -236,12 +236,12 @@
                         
                     toString(Object, String)  
                         
-                class: StringEscapeUtils.java  
+                StringEscapeUtils.java  
                     escapeXml(String)  
                         
                     
                     
-                class: StringUtils.java  
+                StringUtils.java  
                     removeAll(String, String)  
                         
                     removeFirst(String, String)  
@@ -266,13 +266,13 @@
                         
                     toString(byte[], String)  
                         
-                class: SystemUtils.java  
+                SystemUtils.java  
                     
                     
                     
                     
             org.apache.commons.lang3.exception  
-                class: ExceptionUtils.java  
+                ExceptionUtils.java  
                     getDefaultCauseMethodNames()  
                         
                     getCause(Throwable)  
@@ -280,57 +280,57 @@
                     getCause(Throwable, String[])  
                         
             org.apache.commons.lang3.math  
-                class: NumberUtils.java  
+                NumberUtils.java  
                     isNumber(String)  
                         
             org.apache.commons.lang3.text  
-                class: CompositeFormat.java  
+                CompositeFormat.java  
                     
-                class: ExtendedMessageFormat.java  
+                ExtendedMessageFormat.java  
                     
-                class: FormatFactory.java  
+                FormatFactory.java  
                     
-                class: FormattableUtils.java  
+                FormattableUtils.java  
                     
-                class: StrBuilder.java  
+                StrBuilder.java  
                     
-                class: StrLookup.java  
+                StrLookup.java  
                     
-                class: StrMatcher.java  
+                StrMatcher.java  
                     
-                class: StrSubstitutor.java  
+                StrSubstitutor.java  
                     
-                class: StrTokenizer.java  
+                StrTokenizer.java  
                     
-                class: WordUtils.java  
+                WordUtils.java  
                     
             org.apache.commons.lang3.text.translate  
-                class: AggregateTranslator.java  
+                AggregateTranslator.java  
                     
-                class: CharSequenceTranslator.java  
+                CharSequenceTranslator.java  
                     
-                class: CodePointTranslator.java  
+                CodePointTranslator.java  
                     
-                class: EntityArrays.java  
+                EntityArrays.java  
                     
-                class: JavaUnicodeEscaper.java  
+                JavaUnicodeEscaper.java  
                     
-                class: LookupTranslator.java  
+                LookupTranslator.java  
                     
-                class: NumericEntityEscaper.java  
+                NumericEntityEscaper.java  
                     
-                class: NumericEntityUnescaper.java  
+                NumericEntityUnescaper.java  
                     
-                class: OctalUnescaper.java  
+                OctalUnescaper.java  
                     
-                class: UnicodeEscaper.java  
+                UnicodeEscaper.java  
                     
-                class: UnicodeUnescaper.java  
+                UnicodeUnescaper.java  
                     
-                class: UnicodeUnpairedSurrogateRemover.java  
+                UnicodeUnpairedSurrogateRemover.java  
                     
             org.apache.commons.lang3.time  
-                class: DateFormatUtils.java  
+                DateFormatUtils.java  
                     
                     
                     
@@ -339,14 +339,14 @@
                     
                     
                     
-                class: DatePrinter.java  
+                DatePrinter.java  
                     format(long, StringBuffer)  
                         
                     format(Date, StringBuffer)  
                         
                     format(Calendar, StringBuffer)  
                         
-                class: FastDateFormat.java  
+                FastDateFormat.java  
                     format(long, StringBuffer)  
                         
                     format(Date, StringBuffer)  
@@ -355,14 +355,14 @@
                         
                     applyRules(Calendar, StringBuffer)  
                         
-                class: FastDatePrinter.java  
+                FastDatePrinter.java  
                     format(Object, StringBuffer, FieldPosition)  
                         
                     applyRules(Calendar, StringBuffer)  
                         
         Maven: org.easymock:easymock:3.2  
             org.easymock  
-                class: EasyMock.java  
+                EasyMock.java  
                     createStrictMock(Class<T>, Method...)  
                         
                     createStrictMock(String, Class<T>, Method...)  
@@ -387,7 +387,7 @@
                         
                     createNiceMock(String, Class<T>, ConstructorArgs, Method...)  
                         
-                class: EasyMockSupport.java  
+                EasyMockSupport.java  
                     createStrictMock(Class<T>, Method...)  
                         
                     createStrictMock(String, Class<T>, Method...)  
@@ -412,7 +412,7 @@
                         
                     createNiceMock(String, Class<T>, ConstructorArgs, Method...)  
                         
-                class: IMocksControl.java  
+                IMocksControl.java  
                     createMock(Class<T>, Method...)  
                         
                     createMock(Class<T>, ConstructorArgs, Method...)  
@@ -422,7 +422,7 @@
                     createMock(String, Class<T>, ConstructorArgs, Method...)  
                         
             org.easymock.internal  
-                class: MocksControl.java  
+                MocksControl.java  
                     createMock(String, Class<T>, Method...)  
                         
                     createMock(Class<T>, Method...)  
@@ -434,25 +434,25 @@
                     
         Maven: org.hamcrest:hamcrest-core:1.3  
             org.hamcrest  
-                class: BaseMatcher.java  
+                BaseMatcher.java  
                     _dont_implement_Matcher___instead_extend_BaseMatcher_()  
                         
-                class: Matcher.java  
+                Matcher.java  
                     _dont_implement_Matcher___instead_extend_BaseMatcher_()  
                         
             org.hamcrest.core  
-                class: Is.java  
+                Is.java  
                     is(Class<T>)  
                         
         Maven: org.hibernate:hibernate-core:5.3.6.Final  
             org.hibernate  
-                class: BasicQueryContract.java  
+                BasicQueryContract.java  
                     setFlushMode(FlushMode)  
                         
                     getReturnTypes()  
                         
                     
-                class: Cache.java  
+                Cache.java  
                     evictEntity(Class, Serializable)  
                         
                     evictEntity(String, Serializable)  
@@ -475,7 +475,7 @@
                         
                     evictCollectionRegions()  
                         
-                class: Criteria.java  
+                Criteria.java  
                     createAlias(String, String, int)  
                         
                     createAlias(String, String, int, Criterion)  
@@ -486,34 +486,34 @@
                         
                     createCriteria(String, String, int, Criterion)  
                         
-                class: DuplicateMappingException.java  
+                DuplicateMappingException.java  
                     DuplicateMappingException(String, String)  
                         
                     DuplicateMappingException(String, String, String)  
                         
-                class: FetchMode.java  
+                FetchMode.java  
                     
                     
-                class: FlushMode.java  
+                FlushMode.java  
                     isManualFlushMode(FlushMode)  
                         
-                class: InstantiationException.java  
+                InstantiationException.java  
                     getPersistentClass()  
                         
-                class: Interceptor.java  
+                Interceptor.java  
                     onPrepareStatement(String)  
                         
-                class: LockMode.java  
+                LockMode.java  
                     
                     
-                class: MappingNotFoundException.java  
+                MappingNotFoundException.java  
                     
-                class: Metamodel.java  
+                Metamodel.java  
                     getEntityTypeByName(String)  
                         
-                class: OptimisticLockException.java  
+                OptimisticLockException.java  
                     
-                class: Query.java  
+                Query.java  
                     getHibernateFirstResult()  
                         
                     setHibernateFirstResult(int)  
@@ -623,19 +623,19 @@
                     setParameters(Object[], Type[])  
                         
                     
-                class: Session.java  
+                Session.java  
                     setFlushMode(FlushMode)  
                         
                     createFilter(Object, String)  
                         
-                class: SessionBuilder.java  
+                SessionBuilder.java  
                     autoClose(boolean)  
                         
                     connectionReleaseMode(ConnectionReleaseMode)  
                         
                     flushBeforeCompletion(boolean)  
                         
-                class: SessionFactory.java  
+                SessionFactory.java  
                     getClassMetadata(Class)  
                         
                     getClassMetadata(String)  
@@ -646,14 +646,14 @@
                         
                     getAllCollectionMetadata()  
                         
-                class: SharedSessionBuilder.java  
+                SharedSessionBuilder.java  
                     transactionContext()  
                         
                     connectionReleaseMode()  
                         
                     flushBeforeCompletion()  
                         
-                class: SharedSessionContract.java  
+                SharedSessionContract.java  
                     createCriteria(Class)  
                         
                     createCriteria(Class, String)  
@@ -662,22 +662,22 @@
                         
                     createCriteria(String, String)  
                         
-                class: SQLQuery.java  
+                SQLQuery.java  
                     
-                class: StatelessSession.java  
+                StatelessSession.java  
                     connection()  
                         
             org.hibernate.action.internal  
-                class: EntityIdentityInsertAction.java  
+                EntityIdentityInsertAction.java  
                     getDelayedEntityKey()  
                         
             org.hibernate.annotations  
-                class: AccessType.java  
+                AccessType.java  
                     
-                class: CascadeType.java  
+                CascadeType.java  
                     
                     
-                class: Entity.java  
+                Entity.java  
                     mutable()  
                         
                     dynamicInsert()  
@@ -693,33 +693,33 @@
                     persister()  
                         
                     
-                class: FlushModeType.java  
+                FlushModeType.java  
                     
-                class: ForeignKey.java  
+                ForeignKey.java  
                     
-                class: Index.java  
+                Index.java  
                     
-                class: IndexColumn.java  
+                IndexColumn.java  
                     
-                class: Sort.java  
+                Sort.java  
                     
-                class: SortType.java  
+                SortType.java  
                     
-                class: Tuplizer.java  
+                Tuplizer.java  
                     entityMode()  
                         
             org.hibernate.boot  
-                class: MetadataBuilder.java  
+                MetadataBuilder.java  
                     applyAttributeConverter(AttributeConverterDefinition)  
                         
-                class: MetadataSources.java  
+                MetadataSources.java  
                     getMetadataBuilder(StandardServiceRegistry)  
                         
                     addClass(Class)  
                         
                     addDocument(Document)  
                         
-                class: SessionFactoryBuilder.java  
+                SessionFactoryBuilder.java  
                     applyDefaultEntityMode(EntityMode)  
                         
                     applyQuerySubstitutions(Map)  
@@ -729,25 +729,25 @@
                     applyConnectionReleaseMode(ConnectionReleaseMode)  
                         
             org.hibernate.boot.archive.scan.spi  
-                class: ScanOptions.java  
+                ScanOptions.java  
                     canDetectHibernateMappingFiles()  
                         
             org.hibernate.boot.archive.spi  
-                class: ArchiveDescriptorFactory.java  
+                ArchiveDescriptorFactory.java  
                     getURLFromPath(String)  
                         
             org.hibernate.boot.internal  
-                class: InFlightMetadataCollectorImpl.java  
+                InFlightMetadataCollectorImpl.java  
                     getTypeResolver()  
                         
-                class: MetadataImpl.java  
+                MetadataImpl.java  
                     getTypeResolver()  
                         
             org.hibernate.boot.jaxb.internal.stax  
-                class: LocalSchema.java  
+                LocalSchema.java  
                     
             org.hibernate.boot.model  
-                class: TypeContributions.java  
+                TypeContributions.java  
                     contributeType(BasicType, String...)  
                         
                     contributeType(UserType, String...)  
@@ -755,7 +755,7 @@
                     contributeType(CompositeUserType, String...)  
                         
             org.hibernate.boot.registry  
-                class: BootstrapServiceRegistryBuilder.java  
+                BootstrapServiceRegistryBuilder.java  
                     with(Integrator)  
                         
                     with(ClassLoader)  
@@ -766,34 +766,34 @@
                         
                     withStrategySelectors(StrategyRegistrationProvider)  
                         
-                class: StandardServiceRegistryBuilder.java  
+                StandardServiceRegistryBuilder.java  
                     getSettings()  
                         
             org.hibernate.boot.registry.classloading.internal  
-                class: ClassLoaderServiceImpl.java  
+                ClassLoaderServiceImpl.java  
                     fromConfigSettings(Map)  
                         
             org.hibernate.boot.spi  
-                class: AbstractDelegatingMetadata.java  
+                AbstractDelegatingMetadata.java  
                     getTypeResolver()  
                         
-                class: AbstractDelegatingMetadataBuilderImplementor.java  
+                AbstractDelegatingMetadataBuilderImplementor.java  
                     getDelegate()  
                         
-                class: AdditionalJaxbMappingProducer.java  
+                AdditionalJaxbMappingProducer.java  
                     
-                class: BootstrapContext.java  
+                BootstrapContext.java  
                     getReflectionManager()  
                         
-                class: InFlightMetadataCollector.java  
+                InFlightMetadataCollector.java  
                     addAttributeConverter(AttributeConverterDefinition)  
                         
                     getClassmateContext()  
                         
-                class: MetadataBuildingContext.java  
+                MetadataBuildingContext.java  
                     getClassLoaderAccess()  
                         
-                class: MetadataBuildingOptions.java  
+                MetadataBuildingOptions.java  
                     getReflectionManager()  
                         
                     getJandexView()  
@@ -816,13 +816,13 @@
                         
                     getAttributeConverters()  
                         
-                class: MetadataImplementor.java  
+                MetadataImplementor.java  
                     getTypeResolver()  
                         
-                class: SessionFactoryBuilderImplementor.java  
+                SessionFactoryBuilderImplementor.java  
                     markAsJpaBootstrap()  
                         
-                class: SessionFactoryOptions.java  
+                SessionFactoryOptions.java  
                     getStatelessInterceptorImplementor()  
                         
                     isStrictJpaQueryLanguageCompliance()  
@@ -830,10 +830,10 @@
                     getConnectionReleaseMode()  
                         
             org.hibernate.cache  
-                class: RegionFactory.java  
+                RegionFactory.java  
                     
             org.hibernate.cache.spi  
-                class: CacheImplementor.java  
+                CacheImplementor.java  
                     getSecondLevelCacheRegionNames()  
                         
                     getEntityRegionAccess(NavigableRole)  
@@ -856,16 +856,14 @@
                         
                     getNaturalIdAccessesInRegion(String)  
                         
-                class: QueryCache.java  
+                QueryCache.java  
                     
-                class: UpdateTimestampsCache.java  
+                UpdateTimestampsCache.java  
                     
             org.hibernate.cfg  
-                class: AttributeConverterDefinition.java  
+                AttributeConverterDefinition.java  
                     
-                class: AvailableSettings.java  
-                    
-                    
+                AvailableSettings.java  
                     
                     
                     
@@ -878,7 +876,9 @@
                     
                     
                     
-                class: Configuration.java  
+                    
+                    
+                Configuration.java  
                     configure(Document)  
                         
                     add(XmlDocument)  
@@ -891,7 +891,7 @@
                         
                     buildMappings()  
                         
-                class: Environment.java  
+                Environment.java  
                     jvmHasTimestampBug()  
                         
                     useStreamsForBinary()  
@@ -904,75 +904,75 @@
                         
                     isolationLevelToString(int)  
                         
-                class: NamingStrategy.java  
+                NamingStrategy.java  
                     
-                class: RecoverableException.java  
+                RecoverableException.java  
                     
-                class: Settings.java  
+                Settings.java  
                     
             org.hibernate.cfg.annotations  
-                class: TableBinder.java  
+                TableBinder.java  
                     buildUniqueConstraints(UniqueConstraint[])  
                         
             org.hibernate.cfg.annotations.reflection  
-                class: JPAMetadataProvider.java  
+                JPAMetadataProvider.java  
                     JPAMetadataProvider(MetadataBuildingOptions)  
                         
-                class: XMLContext.java  
+                XMLContext.java  
                     XMLContext(ClassLoaderAccess)  
                         
             org.hibernate.collection.internal  
-                class: AbstractPersistentCollection.java  
+                AbstractPersistentCollection.java  
                     AbstractPersistentCollection(SessionImplementor)  
                         
                     identityRemove(Collection, Object, String, SessionImplementor)  
                         
-                class: PersistentArrayHolder.java  
+                PersistentArrayHolder.java  
                     PersistentArrayHolder(SessionImplementor, Object)  
                         
                     PersistentArrayHolder(SessionImplementor, CollectionPersister)  
                         
-                class: PersistentBag.java  
+                PersistentBag.java  
                     PersistentBag(SessionImplementor)  
                         
                     PersistentBag(SessionImplementor, Collection)  
                         
-                class: PersistentIdentifierBag.java  
+                PersistentIdentifierBag.java  
                     PersistentIdentifierBag(SessionImplementor)  
                         
                     PersistentIdentifierBag(SessionImplementor, Collection)  
                         
-                class: PersistentList.java  
+                PersistentList.java  
                     PersistentList(SessionImplementor)  
                         
                     PersistentList(SessionImplementor, List)  
                         
-                class: PersistentMap.java  
+                PersistentMap.java  
                     PersistentMap(SessionImplementor)  
                         
                     PersistentMap(SessionImplementor, Map)  
                         
-                class: PersistentSet.java  
+                PersistentSet.java  
                     PersistentSet(SessionImplementor)  
                         
                     PersistentSet(SessionImplementor, Set)  
                         
-                class: PersistentSortedMap.java  
+                PersistentSortedMap.java  
                     PersistentSortedMap(SessionImplementor)  
                         
                     PersistentSortedMap(SessionImplementor, SortedMap)  
                         
-                class: PersistentSortedSet.java  
+                PersistentSortedSet.java  
                     PersistentSortedSet(SessionImplementor)  
                         
                     PersistentSortedSet(SessionImplementor, SortedSet)  
                         
             org.hibernate.criterion  
-                class: CriteriaSpecification.java  
+                CriteriaSpecification.java  
                     
                     
                     
-                class: DetachedCriteria.java  
+                DetachedCriteria.java  
                     createAlias(String, String, int)  
                         
                     createAlias(String, String, int, Criterion)  
@@ -983,7 +983,7 @@
                         
                     createCriteria(String, String, int, Criterion)  
                         
-                class: Expression.java  
+                Expression.java  
                     sql(String, Object[], Type[])  
                         
                     sql(String, Object, Type)  
@@ -991,15 +991,15 @@
                     sql(String)  
                         
                     
-                class: IlikeExpression.java  
+                IlikeExpression.java  
                     
-                class: ProjectionList.java  
+                ProjectionList.java  
                     create()  
                         
             org.hibernate.dialect  
-                class: DerbyDialect.java  
+                DerbyDialect.java  
                     
-                class: Dialect.java  
+                Dialect.java  
                     getNativeIdentifierGeneratorClass()  
                         
                     getCreateSequenceStrings(String)  
@@ -1040,52 +1040,52 @@
                         
                     supportsNotNullUnique()  
                         
-                class: MySQL57InnoDBDialect.java  
+                MySQL57InnoDBDialect.java  
                     
-                class: MySQL5InnoDBDialect.java  
+                MySQL5InnoDBDialect.java  
                     
-                class: MySQLInnoDBDialect.java  
+                MySQLInnoDBDialect.java  
                     
-                class: MySQLMyISAMDialect.java  
+                MySQLMyISAMDialect.java  
                     
-                class: Oracle9Dialect.java  
+                Oracle9Dialect.java  
                     
-                class: OracleDialect.java  
+                OracleDialect.java  
                     
-                class: PostgreSQLDialect.java  
+                PostgreSQLDialect.java  
                     
             org.hibernate.ejb  
-                class: AvailableSettings.java  
+                AvailableSettings.java  
                     
-                class: HibernateEntityManager.java  
+                HibernateEntityManager.java  
                     
-                class: HibernateEntityManagerFactory.java  
+                HibernateEntityManagerFactory.java  
                     
-                class: HibernateQuery.java  
+                HibernateQuery.java  
                     
             org.hibernate.engine.config.spi  
-                class: ConfigurationService.java  
+                ConfigurationService.java  
                     cast(Class<T>, Object)  
                         
             org.hibernate.engine.internal  
-                class: AbstractEntityEntry.java  
+                AbstractEntityEntry.java  
                     AbstractEntityEntry(Status, Object[], Object, Serializable, Object, LockMode, boolean, ...)  
                         
-                class: ImmutableEntityEntry.java  
+                ImmutableEntityEntry.java  
                     ImmutableEntityEntry(Status, Object[], Object, Serializable, Object, LockMode, boolean, ...)  
                         
-                class: MutableEntityEntry.java  
+                MutableEntityEntry.java  
                     MutableEntityEntry(Status, Object[], Object, Serializable, Object, LockMode, boolean, ...)  
                         
             org.hibernate.engine.jdbc  
-                class: SerializableNClobProxy.java  
+                SerializableNClobProxy.java  
                     isNClob(Clob)  
                         
-                class: WrappedNClob.java  
+                WrappedNClob.java  
                     getWrappedClob()  
                         
             org.hibernate.engine.jdbc.spi  
-                class: JdbcCoordinator.java  
+                JdbcCoordinator.java  
                     getConnectionReleaseMode()  
                         
                     getConnectionHandlingMode()  
@@ -1093,11 +1093,11 @@
                     getResourceRegistry()  
                         
             org.hibernate.engine.query.spi  
-                class: NativeQueryInterpreter.java  
+                NativeQueryInterpreter.java  
                     createCustomLoader(CustomQuery, SessionFactoryImplementor)  
                         
             org.hibernate.engine.spi  
-                class: CacheImplementor.java  
+                CacheImplementor.java  
                     getSecondLevelCacheRegionNames()  
                         
                     getEntityRegionAccess(NavigableRole)  
@@ -1121,32 +1121,32 @@
                     getNaturalIdAccessesInRegion(String)  
                         
                     
-                class: Mapping.java  
+                Mapping.java  
                     getIdentifierGeneratorFactory()  
                         
-                class: NamedQueryDefinition.java  
+                NamedQueryDefinition.java  
                     NamedQueryDefinition(String, String, boolean, String, Integer, Integer, FlushMode, ...)  
                         
                     NamedQueryDefinition(String, String, boolean, String, Integer, Integer, Integer, ...)  
                         
-                class: NamedSQLQueryDefinition.java  
+                NamedSQLQueryDefinition.java  
                     NamedSQLQueryDefinition(String, String, NativeSQLQueryReturn[], List<String>, boolean, String, Integer, ...)  
                         
                     NamedSQLQueryDefinition(String, String, String, List<String>, boolean, String, Integer, ...)  
                         
-                class: PersistenceContext.java  
+                PersistenceContext.java  
                     getEntityEntries()  
                         
-                class: SessionBuilderImplementor.java  
+                SessionBuilderImplementor.java  
                     owner(SessionOwner)  
                         
-                class: SessionDelegatorBaseImpl.java  
+                SessionDelegatorBaseImpl.java  
                     SessionDelegatorBaseImpl(SessionImplementor, Session)  
                         
-                class: SessionFactoryDelegatingImpl.java  
+                SessionFactoryDelegatingImpl.java  
                     getTypeResolver()  
                         
-                class: SessionFactoryImplementor.java  
+                SessionFactoryImplementor.java  
                     getInterceptor()  
                         
                     getQueryPlanCache()  
@@ -1199,7 +1199,7 @@
                         
                     getImportedClassName(String)  
                         
-                class: SessionImplementor.java  
+                SessionImplementor.java  
                     isFlushBeforeCompletionEnabled()  
                         
                     createQuery(String, Class<T>, Selection, QueryOptions)  
@@ -1216,77 +1216,77 @@
                         
                     removeOrphanBeforeUpdates(String, Object)  
                         
-                class: SessionOwner.java  
+                SessionOwner.java  
                     
-                class: SharedSessionContractImplementor.java  
+                SharedSessionContractImplementor.java  
                     getTimestamp()  
                         
                     setFlushMode(FlushMode)  
                         
-                class: TypedValue.java  
+                TypedValue.java  
                     TypedValue(Type, Object, EntityMode)  
                         
             org.hibernate.engine.transaction.spi  
-                class: TransactionImplementor.java  
+                TransactionImplementor.java  
                     invalidate()  
                         
             org.hibernate.event.service.internal  
-                class: EventListenerRegistryImpl.java  
+                EventListenerRegistryImpl.java  
                     EventListenerRegistryImpl(SessionFactoryImplementor, SessionFactoryOptions, ServiceRegistryImplementor)  
                         
             org.hibernate.event.spi  
-                class: AbstractPreDatabaseOperationEvent.java  
+                AbstractPreDatabaseOperationEvent.java  
                     getSource()  
                         
-                class: PostActionEventListener.java  
+                PostActionEventListener.java  
                     requiresPostCommitHanding(EntityPersister)  
                         
             org.hibernate.exception.internal  
-                class: SQLStateConverter.java  
+                SQLStateConverter.java  
                     
             org.hibernate.hql.internal.ast.tree  
-                class: ConstructorNode.java  
+                ConstructorNode.java  
                     getDataType()  
                         
-                class: ParameterContainer.java  
+                ParameterContainer.java  
                     
             org.hibernate.hql.internal.ast.util  
-                class: ASTUtil.java  
+                ASTUtil.java  
                     ASTUtil()  
                         
                     create(ASTFactory, int, String)  
                         
                     getConstantName(Class, int)  
                         
-                class: ColumnHelper.java  
+                ColumnHelper.java  
                     ColumnHelper()  
                         
             org.hibernate.hql.spi.id.inline  
-                class: IdsClauseBuilder.java  
+                IdsClauseBuilder.java  
                     IdsClauseBuilder(Dialect, Type, TypeResolver, String[], List<Object[]>)  
                         
                     getTypeResolver()  
                         
             org.hibernate.id  
-                class: IdentifierGeneratorHelper.java  
+                IdentifierGeneratorHelper.java  
                     createNumber(long, Class)  
                         
-                class: MultipleHiLoPerTableGenerator.java  
+                MultipleHiLoPerTableGenerator.java  
                     
-                class: PersistentIdentifierGenerator.java  
+                PersistentIdentifierGenerator.java  
                     sqlCreateStrings(Dialect)  
                         
                     sqlDropStrings(Dialect)  
                         
-                class: SequenceGenerator.java  
+                SequenceGenerator.java  
                     
                     
-                class: SequenceHiLoGenerator.java  
+                SequenceHiLoGenerator.java  
                     
-                class: SequenceIdentityGenerator.java  
+                SequenceIdentityGenerator.java  
                     
             org.hibernate.id.enhanced  
-                class: OptimizerFactory.java  
+                OptimizerFactory.java  
                     buildOptimizer(String, Class, int)  
                         
                     
@@ -1295,59 +1295,59 @@
                     
                     
             org.hibernate.id.factory  
-                class: IdentifierGeneratorFactory.java  
+                IdentifierGeneratorFactory.java  
                     setDialect(Dialect)  
                         
             org.hibernate.integrator.spi  
-                class: ServiceContributingIntegrator.java  
+                ServiceContributingIntegrator.java  
                     
             org.hibernate.internal  
-                class: AbstractSharedSessionContract.java  
+                AbstractSharedSessionContract.java  
                     errorIfClosed()  
                         
-                class: CoreMessageLogger.java  
+                CoreMessageLogger.java  
                     unsuccessfulCreate(String)  
                         
                     deprecatedManyToManyOuterJoin()  
                         
                     deprecatedManyToManyFetch()  
                         
-                class: SessionCreationOptions.java  
+                SessionCreationOptions.java  
                     getSessionOwner()  
                         
-                class: SessionFactoryImpl.java  
+                SessionFactoryImpl.java  
                     getTypeResolver()  
                         
             org.hibernate.internal.util  
-                class: ConfigHelper.java  
+                ConfigHelper.java  
                     
-                class: ReflectHelper.java  
+                ReflectHelper.java  
                     classForName(String)  
                         
             org.hibernate.internal.util.collections  
-                class: ArrayHelper.java  
+                ArrayHelper.java  
                     isEquals(Object[], Object[])  
                         
                     isEquals(char[], char[])  
                         
                     isEquals(byte[], byte[])  
                         
-                class: CollectionHelper.java  
+                CollectionHelper.java  
                     
                     
                     
             org.hibernate.internal.util.jndi  
-                class: JndiHelper.java  
+                JndiHelper.java  
                     
             org.hibernate.internal.util.xml  
-                class: DTDEntityResolver.java  
+                DTDEntityResolver.java  
                     
-                class: UnsupportedOrmXsdVersionException.java  
+                UnsupportedOrmXsdVersionException.java  
                     
-                class: XMLHelper.java  
+                XMLHelper.java  
                     
             org.hibernate.jpa  
-                class: AvailableSettings.java  
+                AvailableSettings.java  
                     
                     
                     
@@ -1384,9 +1384,9 @@
                     
                     
                     
-                class: HibernateEntityManager.java  
+                HibernateEntityManager.java  
                     
-                class: HibernateEntityManagerFactory.java  
+                HibernateEntityManagerFactory.java  
                     getSessionFactory()  
                         
                     getEntityManagerFactoryName()  
@@ -1394,10 +1394,10 @@
                     getEntityTypeByName(String)  
                         
                     
-                class: QueryHints.java  
+                QueryHints.java  
                     
             org.hibernate.jpa.event.spi  
-                class: CallbackRegistry.java  
+                CallbackRegistry.java  
                     hasPostCreateCallbacks(Class)  
                         
                     hasPostUpdateCallbacks(Class)  
@@ -1407,49 +1407,49 @@
                     hasRegisteredCallbacks(Class, Class)  
                         
             org.hibernate.jpa.event.spi.jpa  
-                class: ExtendedBeanManager.java  
+                ExtendedBeanManager.java  
                     
                     
             org.hibernate.jpa.spi  
-                class: HibernateEntityManagerFactoryAware.java  
+                HibernateEntityManagerFactoryAware.java  
                     
-                class: HibernateEntityManagerImplementor.java  
+                HibernateEntityManagerImplementor.java  
                     getLockRequest(LockModeType, Map<String, Object>)  
                         
                     createQuery(String, Class<T>, Selection, QueryOptions)  
                         
                     
             org.hibernate.loader.entity  
-                class: UniqueEntityLoader.java  
+                UniqueEntityLoader.java  
                     load(Serializable, Object, SharedSessionContractImplementor)  
                         
             org.hibernate.loader.entity.plan  
-                class: AbstractLoadPlanBasedEntityLoader.java  
+                AbstractLoadPlanBasedEntityLoader.java  
                     extractEntityResult(List)  
                         
             org.hibernate.loader.plan.exec.process.spi  
-                class: ResultSetProcessor.java  
+                ResultSetProcessor.java  
                     toOnDemandForm()  
                         
             org.hibernate.lob  
-                class: ReaderInputStream.java  
+                ReaderInputStream.java  
                     
             org.hibernate.mapping  
-                class: Any.java  
+                Any.java  
                     Any(MetadataImplementor, Table)  
                         
-                class: Array.java  
+                Array.java  
                     Array(MetadataImplementor, PersistentClass)  
                         
-                class: Bag.java  
+                Bag.java  
                     Bag(MetadataImplementor, PersistentClass)  
                         
-                class: Collection.java  
+                Collection.java  
                     Collection(MetadataImplementor, PersistentClass)  
                         
                     setOwner(PersistentClass)  
                         
-                class: Component.java  
+                Component.java  
                     Component(MetadataImplementor, PersistentClass)  
                         
                     Component(MetadataImplementor, Component)  
@@ -1460,34 +1460,34 @@
                         
                     Component(MetadataImplementor, Table, PersistentClass)  
                         
-                class: DependantValue.java  
+                DependantValue.java  
                     DependantValue(MetadataImplementor, Table, KeyValue)  
                         
-                class: IdentifierBag.java  
+                IdentifierBag.java  
                     IdentifierBag(MetadataImplementor, PersistentClass)  
                         
-                class: IdentifierCollection.java  
+                IdentifierCollection.java  
                     IdentifierCollection(MetadataImplementor, PersistentClass)  
                         
-                class: IndexedCollection.java  
+                IndexedCollection.java  
                     IndexedCollection(MetadataImplementor, PersistentClass)  
                         
-                class: List.java  
+                List.java  
                     List(MetadataImplementor, PersistentClass)  
                         
-                class: ManyToOne.java  
+                ManyToOne.java  
                     ManyToOne(MetadataImplementor, Table)  
                         
-                class: Map.java  
+                Map.java  
                     Map(MetadataImplementor, PersistentClass)  
                         
-                class: OneToMany.java  
+                OneToMany.java  
                     OneToMany(MetadataImplementor, PersistentClass)  
                         
-                class: OneToOne.java  
+                OneToOne.java  
                     OneToOne(MetadataImplementor, Table, PersistentClass)  
                         
-                class: PersistentClass.java  
+                PersistentClass.java  
                     isCachingExplicitlyRequested()  
                         
                     setCachingExplicitlyRequested(boolean)  
@@ -1496,31 +1496,31 @@
                         
                     setOptimisticLockMode(int)  
                         
-                class: PrimitiveArray.java  
+                PrimitiveArray.java  
                     PrimitiveArray(MetadataImplementor, PersistentClass)  
                         
-                class: PropertyGeneration.java  
+                PropertyGeneration.java  
                     
-                class: RelationalModel.java  
+                RelationalModel.java  
                     
-                class: Set.java  
+                Set.java  
                     Set(MetadataImplementor, PersistentClass)  
                         
-                class: SimpleValue.java  
+                SimpleValue.java  
                     SimpleValue(MetadataImplementor)  
                         
                     SimpleValue(MetadataImplementor, Table)  
                         
-                class: Table.java  
+                Table.java  
                     getQualifiedName(Dialect, String, String)  
                         
                     qualify(String, String, String)  
                         
-                class: ToOne.java  
+                ToOne.java  
                     ToOne(MetadataImplementor, Table)  
                         
             org.hibernate.metadata  
-                class: ClassMetadata.java  
+                ClassMetadata.java  
                     getPropertyValuesToInsert(Object, Map, SessionImplementor)  
                         
                     instantiate(Serializable, SessionImplementor)  
@@ -1532,21 +1532,21 @@
                     setIdentifier(Object, Serializable, SessionImplementor)  
                         
             org.hibernate.persister.collection  
-                class: AbstractCollectionPersister.java  
+                AbstractCollectionPersister.java  
                     doProcessQueuedOps(PersistentCollection, Serializable, int, SharedSessionContractImplementor)  
                         
             org.hibernate.persister.entity  
-                class: AbstractEntityPersister.java  
+                AbstractEntityPersister.java  
                     getLoaders()  
                         
                     getPropertyInsertGenerationInclusions()  
                         
                     getPropertyUpdateGenerationInclusions()  
                         
-                class: AbstractPropertyMapping.java  
+                AbstractPropertyMapping.java  
                     addPropertyPath(String, Type, String[], String[], String[], String[])  
                         
-                class: EntityPersister.java  
+                EntityPersister.java  
                     getPropertyInsertGenerationInclusions()  
                         
                     getPropertyUpdateGenerationInclusions()  
@@ -1556,17 +1556,17 @@
                     getIdentifier(Object)  
                         
             org.hibernate.procedure  
-                class: ParameterRegistration.java  
+                ParameterRegistration.java  
                     getType()  
                         
             org.hibernate.property.access.spi  
-                class: EnhancedGetterMethodImpl.java  
+                EnhancedGetterMethodImpl.java  
                     
             org.hibernate.proxy  
-                class: AbstractLazyInitializer.java  
+                AbstractLazyInitializer.java  
                     AbstractLazyInitializer()  
                         
-                class: AbstractSerializableProxy.java  
+                AbstractSerializableProxy.java  
                     AbstractSerializableProxy()  
                         
                     AbstractSerializableProxy(String, Serializable, Boolean)  
@@ -1574,15 +1574,15 @@
                     setReadOnlyBeforeAttachedToSession(AbstractLazyInitializer)  
                         
             org.hibernate.proxy.pojo.bytebuddy  
-                class: SerializableProxy.java  
+                SerializableProxy.java  
                     SerializableProxy(String, Class, Class[], Serializable, Boolean, Method, Method, ...)  
                         
-            org.hibernate.proxy.class: pojo.javassist  
-                class: SerializableProxy.java  
+            org.hibernate.proxy.pojo.javassist  
+                SerializableProxy.java  
                     SerializableProxy(String, Class, Class[], Serializable, Boolean, Method, Method, ...)  
                         
             org.hibernate.query  
-                class: Query.java  
+                Query.java  
                     setFlushMode(FlushMode)  
                         
                     setString(int, String)  
@@ -1673,17 +1673,17 @@
                         
                     setParameters(Object[], Type[])  
                         
-                class: QueryProducer.java  
+                QueryProducer.java  
                     createSQLQuery(String)  
                         
                     getNamedSQLQuery(String)  
                         
             org.hibernate.query.criteria.internal.expression  
-                class: SizeOfPluralAttributeExpression.java  
+                SizeOfPluralAttributeExpression.java  
                     getCollectionPath()  
                         
             org.hibernate.query.internal  
-                class: ParameterMetadataImpl.java  
+                ParameterMetadataImpl.java  
                     getOrdinalParameterExpectedType(int)  
                         
                     getOrdinalParameterSourceLocation(int)  
@@ -1692,7 +1692,7 @@
                         
                     getNamedParameterSourceLocations(String)  
                         
-                class: QueryParameterBindingsImpl.java  
+                QueryParameterBindingsImpl.java  
                     collectBindTypes()  
                         
                     collectBindValues()  
@@ -1722,118 +1722,118 @@
                     expandListValuedParameters(String, SharedSessionContractImplementor)  
                         
             org.hibernate.resource.jdbc.spi  
-                class: JdbcSessionContext.java  
+                JdbcSessionContext.java  
                     getConnectionReleaseMode()  
                         
                     getConnectionAcquisitionMode()  
                         
-                class: LogicalConnectionImplementor.java  
+                LogicalConnectionImplementor.java  
                     makeShareableCopy()  
                         
             org.hibernate.resource.transaction.backend.jta.internal.synchronization  
-                class: AfterCompletionAction.java  
+                AfterCompletionAction.java  
                     
-                class: ManagedFlushChecker.java  
+                ManagedFlushChecker.java  
                     
             org.hibernate.resource.transaction.spi  
-                class: DdlTransactionIsolator.java  
+                DdlTransactionIsolator.java  
                     prepare()  
                         
-                class: TransactionCoordinatorBuilder.java  
+                TransactionCoordinatorBuilder.java  
                     getDefaultConnectionAcquisitionMode()  
                         
                     getDefaultConnectionReleaseMode()  
                         
             org.hibernate.service.spi  
-                class: SessionFactoryServiceInitiator.java  
+                SessionFactoryServiceInitiator.java  
                     initiateService(SessionFactoryImplementor, SessionFactoryOptions, ServiceRegistryImplementor)  
                         
             org.hibernate.sql  
-                class: JoinFragment.java  
+                JoinFragment.java  
                     
                     
                     
                     
-                class: Select.java  
+                Select.java  
                     getLockMode()  
                         
                     setLockMode(LockMode)  
                         
-                class: Template.java  
+                Template.java  
                     renderWhereStringTemplate(String, String, Dialect)  
                         
                     renderOrderByStringTemplate(String, Dialect, SQLFunctionRegistry)  
                         
             org.hibernate.stat  
-                class: NaturalIdCacheStatistics.java  
+                NaturalIdCacheStatistics.java  
                     
-                class: SecondLevelCacheStatistics.java  
+                SecondLevelCacheStatistics.java  
                     
-                class: Statistics.java  
+                Statistics.java  
                     getSecondLevelCacheStatistics(String)  
                         
                     getNaturalIdCacheStatistics(String)  
                         
             org.hibernate.stat.internal  
-                class: DeprecatedNaturalIdCacheStatisticsImpl.java  
+                DeprecatedNaturalIdCacheStatisticsImpl.java  
                     
             org.hibernate.tool.hbm2ddl  
-                class: ColumnMetadata.java  
+                ColumnMetadata.java  
                     
-                class: ConnectionHelper.java  
+                ConnectionHelper.java  
                     
-                class: DatabaseExporter.java  
+                DatabaseExporter.java  
                     
-                class: Exporter.java  
+                Exporter.java  
                     
-                class: FileExporter.java  
+                FileExporter.java  
                     
-                class: ForeignKeyMetadata.java  
+                ForeignKeyMetadata.java  
                     
-                class: ImportScriptException.java  
+                ImportScriptException.java  
                     
-                class: IndexMetadata.java  
+                IndexMetadata.java  
                     
-                class: ManagedProviderConnectionHelper.java  
+                ManagedProviderConnectionHelper.java  
                     
-                class: SchemaExportTask.java  
+                SchemaExportTask.java  
                     setNamingStrategy(String)  
                         
-                class: SchemaUpdateCommand.java  
+                SchemaUpdateCommand.java  
                     
-                class: ScriptExporter.java  
+                ScriptExporter.java  
                     
-                class: SuppliedConnectionHelper.java  
+                SuppliedConnectionHelper.java  
                     
-                class: SuppliedConnectionProviderConnectionHelper.java  
+                SuppliedConnectionProviderConnectionHelper.java  
                     
-                class: TableMetadata.java  
+                TableMetadata.java  
                     
-            org.hibernate.tool.class: instrument.javassist  
-                class: InstrumentTask.java  
+            org.hibernate.tool.instrument.javassist  
+                InstrumentTask.java  
                     
             org.hibernate.tuple  
-                class: NonIdentifierAttribute.java  
+                NonIdentifierAttribute.java  
                     isDirtyCheckable(boolean)  
                         
-                class: Property.java  
+                Property.java  
                     getNode()  
                         
                     
-                class: PropertyFactory.java  
+                PropertyFactory.java  
                     buildStandardProperty(Property, boolean)  
                         
-                class: StandardProperty.java  
+                StandardProperty.java  
                     
             org.hibernate.tuple.component  
-                class: ComponentMetamodel.java  
+                ComponentMetamodel.java  
                     ComponentMetamodel(Component, MetadataBuildingOptions)  
                         
-                class: ComponentTuplizerFactory.java  
+                ComponentTuplizerFactory.java  
                     ComponentTuplizerFactory(MetadataBuildingOptions)  
                         
             org.hibernate.tuple.entity  
-                class: EntityTuplizer.java  
+                EntityTuplizer.java  
                     instantiate(Serializable)  
                         
                     getIdentifier(Object)  
@@ -1843,28 +1843,28 @@
                     resetIdentifier(Object, Serializable, Object)  
                         
             org.hibernate.type  
-                class: BinaryType.java  
+                BinaryType.java  
                     seed(SharedSessionContractImplementor)  
                         
                     next(byte[], SharedSessionContractImplementor)  
                         
                     getComparator()  
                         
-                class: EntityType.java  
+                EntityType.java  
                     EntityType(TypeScope, String, String, boolean, boolean)  
                         
-                class: ManyToOneType.java  
+                ManyToOneType.java  
                     ManyToOneType(TypeScope, String, String, boolean, boolean, boolean, boolean, ...)  
                         
                     ManyToOneType(TypeScope, String, boolean, String, boolean, boolean, boolean, ...)  
                         
-                class: OneToOneType.java  
+                OneToOneType.java  
                     OneToOneType(TypeScope, String, ForeignKeyDirection, String, boolean, boolean, String, ...)  
                         
-                class: SpecialOneToOneType.java  
+                SpecialOneToOneType.java  
                     SpecialOneToOneType(TypeScope, String, ForeignKeyDirection, String, boolean, boolean, String, ...)  
                         
-                class: TypeFactory.java  
+                TypeFactory.java  
                     customComponent(Class<CompositeUserType>, Properties, TypeScope)  
                         
                     custom(Class<UserType>, Properties, TypeScope)  
@@ -1875,27 +1875,27 @@
                         
                     
                     
-                class: TypeHelper.java  
+                TypeHelper.java  
                     findDirty(NonIdentifierAttribute[], Object[], Object[], boolean[][], boolean, SharedSessionContractImplementor)  
                         
                     findModified(NonIdentifierAttribute[], Object[], Object[], boolean[][], boolean[], boolean, SharedSessionContractImplementor)  
                         
                     
-                class: TypeResolver.java  
+                TypeResolver.java  
                     
             org.hibernate.type.descriptor  
-                class: WrapperOptionsContext.java  
+                WrapperOptionsContext.java  
                     getWrapperOptions()  
                         
                     
-            org.hibernate.type.class: descriptor.java  
-                class: AbstractTypeDescriptor.java  
+            org.hibernate.type.descriptor.java  
+                AbstractTypeDescriptor.java  
                     getJavaTypeClass()  
                         
-                class: JavaTypeDescriptor.java  
+                JavaTypeDescriptor.java  
                     getJavaTypeClass()  
                         
-                class: JavaTypeDescriptorRegistry.java  
+                JavaTypeDescriptorRegistry.java  
                     addDescriptor(JavaTypeDescriptor)  
                         
                     getDescriptor(Class<J>)  
@@ -1903,7 +1903,7 @@
                     
                     
             org.hibernate.type.descriptor.sql  
-                class: SqlTypeDescriptorRegistry.java  
+                SqlTypeDescriptorRegistry.java  
                     addDescriptor(SqlTypeDescriptor)  
                         
                     getDescriptor(int)  
@@ -1911,42 +1911,42 @@
                     
                     
             org.hibernate.type.spi  
-                class: TypeConfiguration.java  
+                TypeConfiguration.java  
                     getTypeResolver()  
                         
             org.hibernate.usertype  
-                class: EnhancedUserType.java  
+                EnhancedUserType.java  
                     toXMLString(Object)  
                         
                     fromXMLString(String)  
                         
         Maven: org.picocontainer:picocontainer:2.14.3  
             org.picocontainer  
-                class: Parameter.java  
+                Parameter.java  
                     resolveInstance(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
                         
                     isResolvable(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
                         
             org.picocontainer.containers  
-                class: CommandLineArgumentsPicoContainer.java  
+                CommandLineArgumentsPicoContainer.java  
                     
             org.picocontainer.injectors  
-                class: ProviderAdapter.java  
+                ProviderAdapter.java  
                     getComponentInstance(PicoContainer)  
                         
             org.picocontainer.parameters  
-                class: AbstractParameter.java  
+                AbstractParameter.java  
                     resolveInstance(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
                         
                     isResolvable(PicoContainer, ComponentAdapter<?>, Type, NameBinding, boolean, Annotation)  
                         
         Maven: org.powermock:powermock-reflect:1.6.2  
             org.powermock.reflect  
-                class: Whitebox.java  
+                Whitebox.java  
                     getInternalState(Object, String, Class<?>, Class<T>)  
                         
         Maven: org.slf4j:log4j-over-slf4j:1.7.12  
             org.apache.log4j  
-                class: MDC.java  
+                MDC.java  
                     getContext()  
                         

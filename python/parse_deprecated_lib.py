@@ -1,21 +1,54 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import re
 from pathlib import Path
+from xml.dom import minidom
+
+from pre_work import wash_data
 
 
 class Lib(object):
     _name: str
-
-    _classes: dict
+    _packages: set
 
     def __init__(self):
         self._name = None
-        self._classes = dict()
+        self._packages = set()
 
     @property
     def name(self):
         return self._name
+
+    @name.setter
+    def name(self, name: str):
+        self._name = name
+
+    @property
+    def packages(self):
+        return self._packages
+
+    def __iter__(self):
+        return (i for i in (self.name, self.packages))
+
+    def __repr__(self):
+        class_name = type(self).__name__
+        return '{}({!r}, {!r})'.format(class_name, *self)
+
+
+class Package:
+    _name: str
+    _classes: set
+
+    def __init__(self):
+        self._name = None
+        self._classes = set()
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name: str):
+        self._name = name
 
     @name.setter
     def name(self, name: str):
@@ -63,10 +96,6 @@ class DeprecatedClass():
     def methods(self):
         return self._methods
 
-    @methods.setter
-    def methods(self, methods: set):
-        self._methods = methods
-
     def __iter__(self):
         return (i for i in (self.name, self.full_name, self.methods))
 
@@ -75,47 +104,32 @@ class DeprecatedClass():
         return '{}({!r}, {!r})'.format(class_name, *self)
 
 
-def get_libname(content: str):
-    match = re.search(r":\s([\w.:_-]+)", content)
-    if match is not None:
-        return match.group(1)
-
-
-def get_package_name(content: str):
-    match = re.search(r"([^@][a-z._-]+)", content)
-    if match is not None:
-        return match.group(0)
-
-
-def get_java_file_name(content: str):
-    match = re.search(r"([\w]+\.java)", content)
-    if match is not None:
-        return match.group(0)
-
-
-def get_method_name(content: str):
-    match = re.search(r"([^@][a-zA-Z]+)\(", content)
-    if match is not None:
-        return match.group(1)
-
-
 def parse(dir_path: Path):
-    lib_file = dir_path.joinpath("deprecated.txt")
-    content = lib_file.read_text("utf-8")
+    # wash_data(dir_path.joinpath("deprecated.txt"))
+
+    mydoc = minidom.parse('deprecated.xml')
+
+    items = mydoc.getElementsByTagName("mvn")
     libs = set()
-    for mvn in content.split("Maven"):
+    for i in items:
         lib = Lib()
-        lines = mvn.split("\n")
-        lib.name = get_libname(lines[0])
-        for line in lines:
-            clz = get_java_file_name(line)
-            if clz is not None:
-                dcls = DeprecatedClass()
-                dcls.name = clz
-                lib.classes[clz] = dcls
-
+        lib.name = (i.attributes['name'].value)
+        pkgs = i.getElementsByTagName("pkg")
+        for p in pkgs:
+            pkg = Package()
+            pkg.name = p.attributes['name'].value
+            clzs = p.getElementsByTagName("class")
+            for c in clzs:
+                clz = DeprecatedClass()
+                clz.name = c.attributes["name"].value
+                clz.full_name = pkg.name + "." + clz.name
+                mtds = c.getElementsByTagName("mtd")
+                for m in mtds:
+                    if m.firstChild is not None:
+                        clz.methods.add(m.firstChild.nodeValue)
+                pkg.classes.add(clz)
+            lib.packages.add(pkg)
         libs.add(lib)
-
     for l in libs:
         print(l)
 
