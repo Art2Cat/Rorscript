@@ -53,15 +53,15 @@ def add_lib_tag(content: str):
 def add_package_tag(content: str):
     new_ss = UserString("")
     for line in content.split("\n"):
-        state = set()
+        is_pkg = True
         if re.search(r"(mvn:)", line) is not None:
-            state.add(1)
+            is_pkg = False
         if re.search(r"(class:)", line) is not None:
-            state.add(1)
+            is_pkg = False
         if re.search(r"(mtd:)", line) is not None:
-            state.add(1)
+            is_pkg = False
 
-        if len(state) == 0:
+        if is_pkg:
             p = re.compile(r"\s{12}(?P<package>[a-z0-9.:]*)", re.VERBOSE)
             res = p.sub(r"   package: \g<package>\n", line)
             new_ss += res
@@ -84,6 +84,10 @@ def add_method_tag(content: str):
 
 
 def wash_data(file_path: Path):
+    """
+    :param file_path: input file is Intellij IDEA search result export file 'export.txt'
+    :return: washed data
+    """
     rss = file_path.read_text(encoding="utf-8")
     rss = remove_usage_found(rss.strip())
     rss = remove_usages_found(rss)
@@ -121,9 +125,11 @@ def get_method_name(content: str):
         return match.group(1)
 
 
-def prettify(elem):
+def prettify(elem: ET.Element):
     """
     Return a pretty-printed XML string for the Element.
+    :param elem: root xml element
+    :type elem: ET.Element
     """
     rough_string = ET.tostring(elem, "utf-8")
     reparsed = minidom.parseString(rough_string)
