@@ -213,4 +213,8 @@ git diff <file_path>
 # check continuity text file modification content
 git diff --word-diff <file_path>
 
+# ignore change to a tracked file
+git update-index --assume-unchanged <file_path>
 
+# track again a untracked file
+git update-index --no-assume-unchanged <file_path>
