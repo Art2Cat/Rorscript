@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
 	"os"
@@ -27,12 +26,6 @@ func main() {
 
 	res := washData("export.txt")
 	clzs := toClasses(res)
-	fmt.Println(len(clzs))
-	for _, c := range clzs {
-		if c != nil {
-			fmt.Println(len(c.Methods))
-		}
-	}
 	walkErr := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			log.Fatalf("Prevent panic by handling failure accessing a path%q: %v\n", dir, err)
@@ -40,7 +33,7 @@ func main() {
 		}
 		if info.Mode().IsRegular() && strings.Contains(info.Name(), ".java") {
 			wg.Add(1)
-			go find(path, sm, clzs)
+			go find(path, &sm, clzs)
 		}
 		return nil
 	})
@@ -49,6 +42,16 @@ func main() {
 	}
 
 	wg.Wait()
+
+	sm.Range(func(k, v interface{}) bool {
+		fmt.Println(k)
+		vs := v.([]*Class)
+		for _, c := range vs {
+
+			fmt.Printf("class: %s, usage: %d\n", c.Name, c.usage)
+		}
+		return true
+	})
 
 	end := time.Now()
 	duration := end.Sub(start)
@@ -61,10 +64,6 @@ type Class struct {
 	LibName  string
 	Methods  []string
 	usage    int
-}
-
-func newClass() *Class {
-	return &Class{Methods: make([]string, 1)}
 }
 
 func washData(filename string) string {
@@ -99,13 +98,13 @@ func washData(filename string) string {
 	res = p.ReplaceAllString(res, "")
 
 	p = re.MustCompile(`Maven:\s(?P<lib>[\w.:_-]+)`)
-	res = p.ReplaceAllString(res, "mvn: ${lib}\n")
+	res = p.ReplaceAllString(res, "mvn: ${lib}")
 
 	p = re.MustCompile(`(?P<java>[\w]+\.java)`)
-	res = p.ReplaceAllString(res, "class: ${java}\n")
+	res = p.ReplaceAllString(res, "class: ${java}")
 
 	p = re.MustCompile(`(?P<mtd>[\w]+\([\w<>?,\s.\[\]]*\))`)
-	res = p.ReplaceAllString(res, "mtd: ${mtd}\n")
+	res = p.ReplaceAllString(res, "mtd: ${mtd}")
 
 	res = addPKGTag(res)
 
@@ -117,7 +116,7 @@ func addPKGTag(content string) string {
 	pkgRE := re.MustCompile(`\s{12}(?P<pkg>[a-z0-9.:]*)`)
 	for _, line := range strings.Split(content, "\n") {
 		if !strings.Contains(line, "mvn:") &&
-			!strings.Contains(line, "java:") &&
+			!strings.Contains(line, "class:") &&
 			!strings.Contains(line, "mtd:") {
 			s := pkgRE.ReplaceAllString(line, "pkg: ${pkg}\n")
 			builder.WriteString(s)
@@ -132,36 +131,35 @@ func toClasses(content string) []*Class {
 	var mvn string
 	var pkg string
 	var clz *Class
+	var classes []*Class
 	mvnRe := re.MustCompile(`mvn:\s([\w.:_-]+)`)
 	pkgRe := re.MustCompile(`pkg:\s([a-z0-9.]+)`)
 	clzRe := re.MustCompile(`class:\s([\w]+)\.java`)
 	mtdRe := re.MustCompile(`mtd:\s([a-zA-Z]+)\(`)
-	classes := make([]*Class, 1)
 	for _, line := range strings.Split(content, "\n") {
 		if strings.Contains(line, "mvn:") {
-			if res := mvnRe.FindAllString(line, -1); res != nil {
-				mvn = res[0]
-				fmt.Println(mvn)
+			if res := mvnRe.FindAllStringSubmatch(line, -1); res != nil {
+				mvn = res[0][1]
 			}
 		}
 		if strings.Contains(line, "pkg:") {
-			if res := pkgRe.FindAllString(line, -1); res != nil {
-				pkg = res[0]
+			if res := pkgRe.FindAllStringSubmatch(line, -1); res != nil {
+				pkg = res[0][1]
 			}
 		}
 		if strings.Contains(line, "class:") {
-			if res := clzRe.FindAllString(line, -1); res != nil {
-				clz = newClass()
-				clz.Name = res[0]
+			if res := clzRe.FindAllStringSubmatch(line, -1); res != nil {
+				clz = &Class{}
+				clz.Name = res[0][1]
 				clz.LibName = mvn
 				clz.FullName = pkg + "." + clz.Name
 				classes = append(classes, clz)
 			}
 		}
 		if strings.Contains(line, "mtd:") {
-			if res := mtdRe.FindAllString(line, -1); res != nil {
+			if res := mtdRe.FindAllStringSubmatch(line, -1); res != nil {
 				if clz != nil {
-					clz.Methods = append(clz.Methods, res[0])
+					clz.Methods = append(clz.Methods, res[0][1])
 				}
 			}
 		}
@@ -169,7 +167,19 @@ func toClasses(content string) []*Class {
 	return classes
 }
 
-func find(filePath string, sm sync.Map, clzs []*Class) {
+func unique(strSlice []string) []string {
+	keys := make(map[string]bool)
+	var list []string
+	for _, entry := range strSlice {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
+}
+
+func find(filePath string, sm *sync.Map, clzs []*Class) {
 	defer wg.Done()
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -181,20 +191,29 @@ func find(filePath string, sm sync.Map, clzs []*Class) {
 	reader := bufio.NewReader(file)
 	_, filename := filepath.Split(filePath)
 
-	potential := make([]*Class, 1)
-	for {
-		line, _, err := reader.ReadLine()
+	var potential []*Class
 
-		if err == io.EOF {
-			break
-		}
-		for _, c := range clzs {
-			if strings.Contains(string(line), c.FullName) {
-				potential = append(potential, c)
-			}
-		}
+	cBytes, _ := ioutil.ReadAll(reader)
+	content := string(cBytes)
 
-		fmt.Printf("%s \n", line)
+	for _, c := range clzs {
+		if strings.Contains(content, c.FullName) {
+			potential = append(potential, c)
+		}
 	}
+
+	for _, c := range potential {
+		c.Methods = unique(c.Methods)
+	}
+
+	for _, c := range potential {
+		usage := 0
+		for i := 0; i < len(c.Methods); i++ {
+			count := strings.Count(content, c.Methods[i])
+			usage += count
+		}
+		c.usage = usage
+	}
+
 	sm.Store(filename, potential)
 }
