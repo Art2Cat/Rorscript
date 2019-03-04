@@ -25,15 +25,14 @@ func main() {
 	var sm sync.Map
 
 	res := washData("export.txt")
-	clzs := toClasses(res)
 	walkErr := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			log.Fatalf("Prevent panic by handling failure accessing a path%q: %v\n", dir, err)
 			return err
 		}
-		if info.Mode().IsRegular() && strings.Contains(info.Name(), ".java") {
+		if info.Mode().IsRegular() && strings.HasSuffix(info.Name(), ".java") {
 			wg.Add(1)
-			go find(path, &sm, clzs)
+			go find(path, &sm, res)
 		}
 		return nil
 	})
@@ -43,26 +42,19 @@ func main() {
 
 	wg.Wait()
 
-	sm.Range(func(k, v interface{}) bool {
-		fmt.Println(k)
-		vs := v.([]*Class)
-		for _, c := range vs {
-
-			fmt.Printf("class: %s, usage: %d\n", c.Name, c.usage)
-		}
-		return true
-	})
+	saveToCSV(sm, filepath.Join(dir, "result.csv"))
 
 	end := time.Now()
 	duration := end.Sub(start)
 	fmt.Printf("total time: %v\n", duration.Seconds())
 }
 
-type Class struct {
-	Name     string
-	FullName string
-	LibName  string
-	Methods  []string
+type class struct {
+	name     string
+	fullName string
+	pkgName  string
+	libName  string
+	methods  map[string]int
 	usage    int
 }
 
@@ -79,7 +71,7 @@ func washData(filename string) string {
 	content, _ := ioutil.ReadAll(reader)
 	var res string
 
-	p := re.MustCompile(`(\([\d]+\susage\sfound\))`)
+	p := re.MustCompile(`(\([\d]+\sUsage\sfound\))`)
 	res = p.ReplaceAllString(string(content), "")
 
 	p = re.MustCompile(`(\([\d]+\susages\sfound\))`)
@@ -88,7 +80,7 @@ func washData(filename string) string {
 	p = re.MustCompile(`(//\s?[\w.:?(\-)\s]+)`)
 	res = p.ReplaceAllString(res, "")
 
-	p = re.MustCompile(`(@Deprecated)`)
+	p = re.MustCompile(`([\d]*\s@Deprecated)`)
 	res = p.ReplaceAllString(res, "")
 
 	p = re.MustCompile(`(//\s?[\w.:?(\-)\s]+)`)
@@ -127,11 +119,11 @@ func addPKGTag(content string) string {
 	return builder.String()
 }
 
-func toClasses(content string) []*Class {
+func toClasses(content string) []*class {
 	var mvn string
 	var pkg string
-	var clz *Class
-	var classes []*Class
+	var clz *class
+	var classes []*class
 	mvnRe := re.MustCompile(`mvn:\s([\w.:_-]+)`)
 	pkgRe := re.MustCompile(`pkg:\s([a-z0-9.]+)`)
 	clzRe := re.MustCompile(`class:\s([\w]+)\.java`)
@@ -149,17 +141,19 @@ func toClasses(content string) []*Class {
 		}
 		if strings.Contains(line, "class:") {
 			if res := clzRe.FindAllStringSubmatch(line, -1); res != nil {
-				clz = &Class{}
-				clz.Name = res[0][1]
-				clz.LibName = mvn
-				clz.FullName = pkg + "." + clz.Name
+				clz = &class{methods: make(map[string]int)}
+				clz.name = res[0][1]
+				clz.libName = mvn
+				clz.pkgName = pkg
+				clz.fullName = clz.pkgName + "." + clz.name
 				classes = append(classes, clz)
 			}
 		}
 		if strings.Contains(line, "mtd:") {
 			if res := mtdRe.FindAllStringSubmatch(line, -1); res != nil {
 				if clz != nil {
-					clz.Methods = append(clz.Methods, res[0][1])
+					name := res[0][1]
+					clz.methods[name] = 0
 				}
 			}
 		}
@@ -179,7 +173,9 @@ func unique(strSlice []string) []string {
 	return list
 }
 
-func find(filePath string, sm *sync.Map, clzs []*Class) {
+func find(filePath string, sm *sync.Map, res string) {
+
+	clzs := toClasses(res)
 	defer wg.Done()
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -191,29 +187,60 @@ func find(filePath string, sm *sync.Map, clzs []*Class) {
 	reader := bufio.NewReader(file)
 	_, filename := filepath.Split(filePath)
 
-	var potential []*Class
+	var potential []*class
 
 	cBytes, _ := ioutil.ReadAll(reader)
 	content := string(cBytes)
 
 	for _, c := range clzs {
-		if strings.Contains(content, c.FullName) {
+		if strings.Contains(content, c.fullName) {
 			potential = append(potential, c)
 		}
 	}
 
 	for _, c := range potential {
-		c.Methods = unique(c.Methods)
-	}
-
-	for _, c := range potential {
-		usage := 0
-		for i := 0; i < len(c.Methods); i++ {
-			count := strings.Count(content, c.Methods[i])
+		usage := 1
+		for k, _ := range c.methods {
+			f := string(k[0])
+			count := 0
+			if f == strings.ToUpper(f) {
+				count = strings.Count(content, fmt.Sprintf("new %s", k))
+			} else {
+				count = strings.Count(content, k)
+			}
+			c.methods[k] += count
 			usage += count
 		}
 		c.usage = usage
 	}
 
-	sm.Store(filename, potential)
+	sm.Store(strings.TrimSuffix(filename, ".java"), potential)
+}
+
+func saveToCSV(sm sync.Map, output string) {
+
+	var builder strings.Builder
+
+	sm.Range(func(k, v interface{}) bool {
+		vs := v.([]*class)
+		for _, c := range vs {
+			builder.WriteString(fmt.Sprintf("%s, %s, %s, %d\n", c.fullName, c.libName, k, c.usage))
+			for n, count := range c.methods {
+				var mtdName string
+				if count == 0 {
+					continue
+					//mtdName = c.fullName
+				} else {
+					mtdName = c.fullName + "." + n
+				}
+				builder.WriteString(fmt.Sprintf("%s, %s, %s, %d\n", mtdName, c.libName, k, count))
+			}
+		}
+		return true
+	})
+	err := ioutil.WriteFile(output, []byte(builder.String()), 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+	//fmt.Println(builder.String())
 }
