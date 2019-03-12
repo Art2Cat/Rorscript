@@ -43,6 +43,7 @@ if [[ -z $(cat ~/.zshrc | grep GOROOT | head -n1) ]]; then
 	echo "Did not found GOROOT in the .zshrc. configuring..."
 	echo -e "export GOROOT=/usr/local/go" >> ~/.zshrc
 	echo -e "export PATH=\$PATH:\$GOROOT/bin" >> ~/.zshrc
+	echo -e "export GOPROXY=https://goproxy.io" >> ~/.zshrc
 	source ~/.zshrc
 fi
 
