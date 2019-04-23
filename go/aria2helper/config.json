@@ -1,3 +1,4 @@
 {
-    "url": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt"
+    "trackerUrl": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt",
+    "confUrl": "https://raw.githubusercontent.com/Art2Cat/Rorscript/config/aria2.conf"
 }
