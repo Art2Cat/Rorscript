@@ -34,7 +34,11 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
-	json.Unmarshal(data, &config)
+
+	err = json.Unmarshal(data, &config)
+	if err != nil {
+		log.Panic(err)
+	}
 
 	// get BT Trackers List
 	lists := getBTTrackersList(config.TrackerURL)
