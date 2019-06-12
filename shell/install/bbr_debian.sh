@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 #
 current_version=$(me -r | grep -Eo "[0-9\.]+" | xargs | awk '{print $1}' | sed 's/\.//g')
 target_verison=490
