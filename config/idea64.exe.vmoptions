@@ -18,9 +18,11 @@
 -XX:SoftRefLRUPolicyMSPerMB=150
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
+-XX:MaxJavaStackTraceDepth=10000
 -Dsun.io.useCanonCaches=false
 -Djava.net.preferIPv4Stack=true
 -Djdk.http.auth.tunneling.disabledSchemes=""
+-Djdk.attach.allowAttachSelf
 -Dawt.useSystemAAFontSettings=lcd
 -Dswing.aatext=true
 -XX:ErrorFile=$USER_HOME/java_error_in_idea_%p.log
