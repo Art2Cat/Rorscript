@@ -46,7 +46,7 @@ if [ -d /usr/local/go ]; then
     sudo rm -rf /usr/local/go
 fi
 
-sudo tar -C /usr/local -xvf $go_archive_file
+tar -C /usr/local -xvf $go_archive_file
 
 if [[ -z $(cat ~/.zshrc | grep GOROOT | head -n1) ]]; then
     echo "Did not found GOROOT in the .zshrc. configuring..."
