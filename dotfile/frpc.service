@@ -1,0 +1,14 @@
+[Unit]
+Description=frp client
+
+
+[Service]
+Type=forking
+ExecStart=/usr/local/frp/frpc -c /usr/local/frpc.ini
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+
