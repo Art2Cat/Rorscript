@@ -3,8 +3,8 @@ Description=frp service
 
 
 [Service]
-Type=forking
-ExecStart=/root/frp_0.27.0_linux_amd64/frps -c /root/frp_0.27.0_linux_amd64/frps.ini
+ype=simple
+ExecStart=/usr/local/frp/frps -c /usr/local/frp/frps.ini
 Restart=on-failure
 RestartSec=10
 KillMode=process

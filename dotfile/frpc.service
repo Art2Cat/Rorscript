@@ -3,7 +3,7 @@ Description=frp client
 
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/usr/local/frp/frpc -c /usr/local/frpc.ini
 Restart=on-failure
 RestartSec=10
