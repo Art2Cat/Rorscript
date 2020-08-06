@@ -6,15 +6,17 @@
 -Xverify:none
 -XX:MetaspaceSize=512m
 -XX:+UseG1GC
+-XX:G1HeapRegionSize=1m
 -XX:-UseConcMarkSweepGC
 -XX:-UseParNewGC
--XX:+CMSParallelRemarkEnabled
+-XX:-CMSParallelRemarkEnabled
 -XX:ConcGCThreads=16
 -XX:ReservedCodeCacheSize=500m
 -Dfile.encoding=UTF-8
 -XX:+TieredCompilation
 -XX:+UseCompressedOops
 -XX:+DisableExplicitGC
+-XX:CICompilerCount=2
 -XX:SoftRefLRUPolicyMSPerMB=150
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
@@ -27,3 +29,5 @@
 -Dswing.aatext=true
 -XX:ErrorFile=$USER_HOME/java_error_in_idea_%p.log
 -XX:HeapDumpPath=$USER_HOME/java_error_in_idea.hprof
+-Dkotlinx.coroutines.debug=off
+-Djdk.module.illegalAccess.silent=true
