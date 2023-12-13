@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 cat >/lib/systemd/system/frps.service << EOF
  [Unit]
