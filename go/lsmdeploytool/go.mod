@@ -1,9 +1,11 @@
 module github.com/art2cat/lsmdeploytool
 
+go 1.25.0
+
 require (
 	github.com/mholt/archiver v3.0.0+incompatible
 	github.com/pkg/sftp v1.8.3
-	golang.org/x/crypto v0.17.0
+	golang.org/x/crypto v0.45.0
 )
 
 require (
@@ -16,5 +18,5 @@ require (
 	github.com/stretchr/testify v1.8.1 // indirect
 	github.com/ulikunitz/xz v0.5.8 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
-	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
 )
